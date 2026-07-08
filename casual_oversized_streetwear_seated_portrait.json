@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "Casual Oversized Streetwear Seated Portrait",
+    "aspect_ratio": "9:16",
+    "orientation": "portrait",
+    "style": "clean high-key lifestyle fashion portrait",
+    "genre": "quiet urban casual streetwear portrait",
+    "mood": ["calm", "detached", "quiet", "contemplative"]
+  },
+
+  "reference_identity": {
+    "source": "attached_reference_image",
+    "identity_preservation": "very_high",
+    "face_lock_keywords": [
+      "large almond-shaped eyes",
+      "small narrow nose",
+      "soft oval face",
+      "slender jawline",
+      "small chin",
+      "natural facial proportions",
+      "soft cheek contour"
+    ]
+  },
+
+  "subject": {
+    "gender": "adult woman",
+    "age": "18-25",
+    "ethnicity": "East Asian",
+    "appearance": {
+      "facial_identity": "soft oval face, narrow jawline, small tapered chin, large almond-shaped eyes, small nose, fair skin",
+      "skin": "fair neutral skin tone with soft diffuse highlights and minimal shadow contrast"
+    },
+    "expression": {
+      "emotion": "completely relaxed and emotionally neutral, appearing quietly distracted by something above",
+      "eyebrows": "natural low resting position, soft gentle arch, no tension, brows separated normally with no furrowing",
+      "eyelids": "eyes moderately open, upper eyelids relaxed and slightly heavy, no widening or squinting",
+      "eye_direction": "both irises directed upward toward the upper left area of the frame",
+      "lips": "closed naturally with no visible separation",
+      "smile": "no smile, neutral mouth",
+      "mouth_detail": "mouth corners remain level, lips lightly touching, no muscular engagement around the mouth",
+      "jaw": "jaw fully relaxed, teeth likely resting lightly together",
+      "facial_muscles": "entire face relaxed with no visible tension in brow, eyes, cheeks, or mouth",
+      "overall_impression": "a candid moment of quiet attention directed away from the viewer",
+      "avoid": ["exaggerated surprise", "wide smile", "raised eyebrows"]
+    },
+    "gaze": {
+      "direction": "upward and slightly left of camera",
+      "quality": "softly focused with very low muscle tension around the eyes",
+      "emotion": "a gaze that feels mentally elsewhere, gently curious and quietly reflective rather than actively engaged",
+      "overall": "averted and contemplative",
+      "iris_alignment": "both irises aligned and directed upward-left in the same direction",
+      "sclera_visibility": "more sclera visible below the irises due to the upward gaze, minimal sclera visible above",
+      "gaze_body_alignment": "head is tilted upward and turned slightly left; irises follow the same direction naturally and consistently"
+    },
+    "makeup": {
+      "overall_level": "minimal natural makeup",
+      "skin_base": "light natural coverage or bare skin appearance with visible natural softness",
+      "eyes": {
+        "eyeliner": "very subtle upper lash definition or none",
+        "eyeshadow": "soft neutral shading only",
+        "mascara": "light natural lash definition",
+        "overall_eye_makeup": "barely-there natural enhancement"
+      },
+      "lips": {
+        "color": "natural soft pink",
+        "texture": "natural satin finish",
+        "overall_lip_impression": "effortless bare lip appearance"
+      },
+      "cheeks": {
+        "blush": "soft natural flush",
+        "highlighter": "none visible",
+        "contour": "none visible"
+      },
+      "avoid": ["heavy glam makeup", "dramatic eyeliner", "overly glossy lips"]
+    }
+  },
+
+  "hair": {
+    "length": "mid-back length",
+    "color": "deep black with subtle cool brown reflections in highlights",
+    "style": "long straight layered cut",
+    "overall_silhouette": "long narrow silhouette with most volume concentrated around the head and upper length, tapering softly downward",
+    "parting": "soft off-center part slightly right of center",
+    "layers": "long face-framing layers beginning around the cheek and jaw area, blending into the overall length",
+    "ends": "soft lightly tapered ends with natural texture",
+    "bangs": "medium-density wispy fringe covering part of the forehead and ending around eyebrow level",
+    "side_hair": "long side sections fall forward along both sides of the face, partially framing the cheeks",
+    "ear_visibility": "right ear partially visible, left ear mostly covered",
+    "hair_line": "mostly obscured by fringe, visible portions appear soft and rounded",
+    "volume": "moderate natural volume around crown with flatter lengths",
+    "texture": "silky straight texture with smooth surface and visible individual strands",
+    "flyaways": "a few loose strands around the face and near the crown",
+    "condition": "healthy and glossy",
+    "movement": "mostly still with slight natural strand separation",
+    "avoid": [
+      "large curls",
+      "overly stiff styling",
+      "artificially perfect hair geometry"
+    ]
+  },
+
+  "scene": {
+    "location": "minimal studio-like setting",
+    "environment": [
+      "plain light gray background",
+      "clean uncluttered space",
+      "no visible environmental context"
+    ],
+    "details": [
+      "subject seated",
+      "high-key minimalist presentation",
+      "focus entirely on subject"
+    ],
+    "background_rendering": {
+      "complexity": "extremely simple",
+      "focus": "subject is the sole focal point",
+      "depth": "minimal depth cues"
+    }
+  },
+
+  "wardrobe": {
+    "top": {
+      "type": "oversized short-sleeve T-shirt",
+      "color": "white",
+      "style": "relaxed streetwear casual",
+      "details": ["very loose fit", "small chest graphic logo"]
+    },
+    "bottom": {
+      "type": "shorts or skirt mostly obscured",
+      "style": "casual streetwear"
+    },
+    "legwear": {
+      "type": "thigh-high socks",
+      "tone": "opaque black",
+      "appearance": "clean athletic-inspired appearance"
+    },
+    "shoes": {
+      "type": "chunky sneakers",
+      "style": "oversized athletic footwear",
+      "color": "white",
+      "design": "thick sole with layered panels"
+    },
+    "accessories": {
+      "item": "backpack straps and small ear piercings",
+      "design": "minimal casual accessories",
+      "avoid": ["large statement jewelry"]
+    },
+    "overall_style": ["urban streetwear", "oversized casual fashion"]
+  },
+
+  "pose": {
+    "description": "seated with legs extended forward toward the camera",
+    "camera_facing": "3/4 front",
+    "body_axis_to_camera": "approximately 20-30 degrees off frontal",
+    "depth_direction": "legs project strongly toward camera creating depth while torso remains relatively frontal",
+    "legs": "both knees bent and positioned toward camera, feet planted forward",
+    "arms": "arms relaxed beside the body inside oversized sleeves and outerwear",
+    "hand_action": "hands resting naturally with no active gesture",
+    "upper_body": "torso upright with slight backward lean",
+    "head": "head turned slightly left and tilted upward",
+    "head_tilt": "upward tilt approximately 20 degrees",
+    "head_turn": "approximately 15 degrees left",
+    "chin": "slightly raised",
+    "neck_anatomy": "neck elongated naturally due to upward gaze but remains anatomically realistic",
+    "shoulder_anatomy": "shoulders relaxed and slightly rounded forward",
+    "posture": "comfortable and casual without visible tension",
+    "overall_impression": "an effortless candid seated pose with relaxed streetwear energy",
+    "adjustment_rule": "maintain natural neck alignment and realistic seated proportions over dramatic head rotation"
+  },
+
+  "lighting": {
+    "type": "soft artificial studio lighting",
+    "quality": "very diffuse and low-contrast",
+    "source": "broad soft source from upper front-left around 10 o'clock",
+    "skin_lighting_behavior": {
+      "lit_side": "skin receives soft neutral-white highlights with a slightly cool cast",
+      "shadow_side": "shadows remain very light and neutral with substantial fill light",
+      "transition": "extremely gradual and smooth light-to-shadow transition",
+      "overall_skin_tone": "skin tone varies subtly with lighting while remaining predominantly fair and neutral",
+      "avoid": [
+        "flat evenly-lit skin with no directional shading",
+        "skin tone that does not respond to the light source color temperature",
+        "harsh dramatic shadows"
+      ]
+    },
+    "effects": [
+      "soft highlight on hair surface",
+      "gentle fabric shading",
+      "minimal contrast background"
+    ],
+    "avoid": [
+      "hard spotlight",
+      "strong directional shadows",
+      "overexposed highlights"
+    ]
+  },
+
+  "camera": {
+    "composition": "vertical fashion portrait",
+    "angle": "low angle looking upward from near foot level",
+    "focal_length": "28-35mm",
+    "shot_type": "full body",
+    "subject_position": "centered",
+    "rule_of_thirds": "centered composition, rule of thirds largely not applied",
+    "negative_space": "substantial empty space around the subject enhances isolation and simplicity",
+    "framing": {
+      "focus": [
+        "face",
+        "oversized clothing silhouette",
+        "forward perspective of legs and shoes"
+      ]
+    },
+    "depth_of_field": "deep focus",
+    "style": "clean fashion illustration translated into a realistic portrait setup"
+  },
+
+  "color_grading": {
+    "style": "soft neutral high-key grading",
+    "palette": ["white", "black", "light gray", "soft pink"],
+    "contrast": "low to medium",
+    "saturation": "slightly desaturated",
+    "processing": "clean and understated"
+  },
+
+  "anatomy_and_proportion": {
+    "head_size": "head should remain proportional despite low-angle perspective",
+    "neck": "neck length should remain realistic and connected naturally to shoulders",
+    "shoulder_width": "moderately narrow and proportional to head size",
+    "torso": "torso should maintain natural length without compression",
+    "arm_length": "arms should extend naturally beneath oversized clothing",
+    "hand_size": "hands proportional to forearms and partially obscured by sleeves",
+    "legs_and_hips": "perspective enlargement of legs and shoes should remain believable and not exaggerated",
+    "overall_body_proportions": "full figure should preserve realistic human proportions despite wide-angle perspective",
+    "avoid": [
+      "head too large or too small relative to body",
+      "neck that appears stretched, broken, or distorted",
+      "shoulders unnaturally narrow or wide",
+      "excessive perspective distortion of feet and legs"
+    ]
+  },
+
+  "quality": {
+    "photorealistic": true,
+    "high_detail": true,
+    "realistic_skin_texture": true,
+    "natural_hair_detail": true,
+    "realistic_fabric_texture": true,
+    "realistic_anatomy": true,
+    "identity_preservation_priority": "highest"
+  }
+}

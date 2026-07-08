@@ -1,0 +1,316 @@
+{
+  "meta": {
+    "title": "[INSERT TITLE]",
+    "aspect_ratio": "9:16",
+    "orientation": "portrait",
+    "style": "[INSERT OVERALL VISUAL STYLE — e.g. photorealistic outdoor lifestyle snapshot]",
+    "genre": "[INSERT GENRE/VIBE — e.g. quiet emotional preppy outdoor portrait]",
+    "mood": [
+      "[INSERT MOOD 1 — e.g. calm]",
+      "[INSERT MOOD 2 — e.g. clean]",
+      "[INSERT MOOD 3 — e.g. quiet]",
+      "[INSERT MOOD 4 — ADD OR REMOVE AS NEEDED]"
+    ]
+  },
+  "subject": {
+    "gender": "[INSERT GENDER — e.g. adult woman / adult man / non-binary]",
+    "age": "[INSERT AGE RANGE — e.g. 20-28]",
+    "ethnicity": "[INSERT ETHNICITY — e.g. East Asian / South Asian / etc.]",
+    "appearance": {
+      "skin": "[INSERT SKIN DESCRIPTION — describe how the skin looks under the specific lighting of this scene, e.g. 'fair skin with warm golden highlights from afternoon sun' / 'cool-toned skin reflecting city night light' — match the skin tone description to the lighting source you define later]"
+    },
+    "expression": {
+      "overall_impression": "[INSERT OVERALL IMPRESSION FIRST — describe the expression as a single felt quality before breaking it down, e.g. 'the face reads as completely unguarded, as if caught in a private moment — no performance, no awareness of being watched' / 'composed and inward, the kind of stillness that comes from genuine calm rather than blankness' / 'quietly open, somewhere between wonder and daydream']",
+      "emotion_keywords": "[INSERT 3–5 EMOTION KEYWORDS that a generative model can anchor to — choose words that carry visual weight, e.g. 'serene, still, inward, soft, unguarded' / 'absorbed, distant, quietly present, unhurried' / 'composed, focused, cool, self-contained']",
+      "emotion": "[INSERT OVERALL EMOTION — e.g. calm and quiet / quietly surprised / focused and composed]",
+      "eyebrows": "[INSERT EYEBROW STATE — describe position and tension, e.g. 'relaxed and neutral, not raised or furrowed' / 'very slightly raised, soft and open without exaggeration']",
+      "eyelids": "[INSERT EYELID STATE — describe eye openness and lid tension, e.g. 'eyes open naturally, upper eyelid relaxed, not squinting' / 'slightly heavy-lidded, calm and still' — specify if NOT exaggerated or widened beyond realistic range]",
+      "eye_direction": "[INSERT EYE DIRECTION — describe where the iris/pupil is actually pointing, e.g. 'iris directed slightly upward toward camera' / 'gaze angled downward toward the phone screen' — this should match the gaze.direction field]",
+      "lips": "[INSERT LIP STATE — e.g. 'naturally closed with no tension' / 'slightly parted approximately 3–5mm, lower lip very slightly dropped']",
+      "smile": "[INSERT SMILE STATE — e.g. 'no smile, neutral' / 'very faint soft smile, corners barely lifted']",
+      "mouth_detail": "[INSERT MOUTH DETAIL — describe muscle tension around the mouth, e.g. 'no tension at the mouth corners, completely relaxed' / 'lips parted effortlessly, jaw slightly dropped, no muscular engagement']",
+      "jaw": "[INSERT JAW STATE — e.g. 'jaw relaxed and slightly dropped, consistent with parted lips' / 'jaw closed and neutral, no clenching']",
+      "facial_muscles": "[INSERT OVERALL MUSCLE STATE — e.g. 'all facial muscles fully relaxed, no tension anywhere' / 'slight engagement in the brow only, rest of face soft']",
+      "avoid": [
+        "[INSERT EXPRESSION TO AVOID 1 — e.g. exaggerated emotion / eyebrows raised too high]",
+        "[INSERT EXPRESSION TO AVOID 2 — e.g. mouth opened too wide / any expression that looks consciously posed]",
+        "[INSERT EXPRESSION TO AVOID 3 — ADD OR REMOVE AS NEEDED]"
+      ],
+      "reference_note": "Extract the visible expression from the source image as a facial performance: eyebrow tension, eyelid behavior, mouth state, jaw relaxation, and facial muscle tension."
+    },
+    "gaze": {
+      "direction": "[INSERT GAZE DIRECTION — e.g. looking directly at camera / slightly off-camera / downward toward an object]",
+      "quality": "[INSERT GAZE QUALITY — describe focus sharpness and eye muscle tension together, e.g. 'sharp and fully focused, eye muscles slightly engaged' / 'soft and slightly unfocused, eye muscles fully relaxed' / 'clear but gentle, minimal tension around the eyes' — how taut or relaxed the area around the eyes feels directly affects the perceived intensity of the gaze]",
+      "emotion": "[INSERT GAZE EMOTION — describe the emotional temperature of the eyes in specific terms, not just a single word. e.g. 'a gaze that feels like the mind is elsewhere, softly detached and dreamlike' / 'natural indifference as if unaware of the camera, quiet and unselfconscious' / 'softly focused concentration, tension slightly released, warm but not inviting' — the texture and warmth of the eye expression should be described as a felt quality]",
+      "overall": "[INSERT GAZE OVERALL — e.g. calm and present / averted and contemplative]",
+      "iris_alignment": "[INSERT IRIS ALIGNMENT — both eyes must point in exactly the same direction. e.g. 'both irises aligned and directed toward the camera' / 'both irises directed slightly upward-left in unison' — misaligned irises cause an unnatural cross-eyed or wall-eyed appearance]",
+      "sclera_visibility": "[INSERT SCLERA VISIBILITY — describe how much white of the eye is visible and where, based on the iris position. e.g. 'iris centered, equal sclera visible on all sides' / 'iris slightly upward, more sclera visible below, less above' / 'iris directed down, sclera visible at top only' — incorrect sclera ratio causes rolled-back or half-closed eye appearance]",
+      "gaze_body_alignment": "[INSERT GAZE-BODY ALIGNMENT — explicitly state the relationship between gaze direction, iris direction, and head turn so all three are consistent. e.g. 'head faces front, irises directed straight at camera — all three aligned' / 'head turned 15 degrees left, irises also directed left to match — gaze, iris, and head direction must all point the same way' — misalignment between these three causes the most common unnatural eye appearance]",
+      "reference_note": "Extract the visible gaze from the source image through iris direction, eyelid tension, focus quality, sclera visibility, and emotional temperature."
+    },
+    "makeup": {
+      "overall_level": "[INSERT MAKEUP LEVEL — e.g. no makeup / minimal natural / soft everyday / polished editorial / full glam]",
+      "skin_base": "[INSERT SKIN BASE — describe foundation/coverage feel, e.g. 'bare skin, no visible base product' / 'light natural coverage, skin texture still visible' / 'smooth even base with soft matte finish']",
+      "eyes": {
+        "eyeliner": "[INSERT EYELINER — e.g. none / thin natural line along upper lash only / soft smudged liner / precise wing]",
+        "eyeshadow": "[INSERT EYESHADOW — e.g. none / subtle warm neutral on the lid / soft smoky depth at the outer corner]",
+        "mascara": "[INSERT MASCARA — e.g. none / light natural lash definition / full voluminous lashes]",
+        "overall_eye_makeup": "[INSERT OVERALL EYE IMPRESSION — e.g. barely-there natural / soft defined / dramatically enhanced]"
+      },
+      "lips": {
+        "color": "[INSERT LIP COLOR — e.g. natural bare lip tone / soft rosy nude / warm terracotta / deep berry]",
+        "texture": "[INSERT LIP TEXTURE — e.g. natural matte / soft glossy / satin finish / glossy wet look]",
+        "overall_lip_impression": "[INSERT OVERALL LIP IMPRESSION — e.g. effortless bare / softly colored / statement lip]"
+      },
+      "cheeks": {
+        "blush": "[INSERT BLUSH — e.g. none / soft natural flush / warm peachy blush lightly diffused / defined sculpted blush]",
+        "highlighter": "[INSERT HIGHLIGHTER — e.g. none / subtle natural glow on cheekbone / soft luminous highlight]",
+        "contour": "[INSERT CONTOUR — e.g. none / very soft natural shadow / defined contour along cheekbone and jaw]"
+      },
+      "avoid": [
+        "[INSERT MAKEUP TO AVOID 1 — e.g. heavy full-coverage foundation / overdone glam makeup]",
+        "[INSERT MAKEUP TO AVOID 2 — e.g. visible cakey texture / overly dramatic eye makeup]",
+        "[INSERT MAKEUP TO AVOID 3 — ADD OR REMOVE AS NEEDED]"
+      ]
+    }
+  },
+  "hair": {
+    "_priority": "Treat hair as a key visual style element — describe with enough specificity that a hairstylist could recreate it. Every visible aspect must be captured precisely.",
+    "length": "[INSERT HAIR LENGTH — be specific about where it falls on the body, e.g. 'chin-length bob' / 'just past the collarbone' / 'mid-back length' / 'grazing the shoulders']",
+    "color": "[INSERT HAIR COLOR — describe base color, any tonal variation, and how lighting interacts with it, e.g. 'deep near-black brown base with warm chestnut tones visible in direct light' / 'platinum blonde with cool ash undertone, no visible roots']",
+    "style": "[INSERT HAIR STYLE — name the cut style if identifiable, e.g. 'Korean-style see-through bob' / 'wolf cut with heavy crown layers' / 'long one-length straight cut with no styling']",
+    "overall_silhouette": "[INSERT OVERALL HAIR SILHOUETTE — describe the outer shape precisely, e.g. 'A-line bob — shorter at the back, angled longer toward the jaw' / 'U-shape at the bottom, full and rounded' / 'inverted triangle — full at crown, tapered at ends']",
+    "parting": "[INSERT PARTING — describe exact position and how clean or soft it is, e.g. 'clean center part running from forehead to crown' / 'soft natural part slightly right of center, not a hard line' / 'no visible part — hair falls forward without separation']",
+    "layers": "[INSERT LAYERS — describe where layers begin, how many, and their effect, e.g. 'no layers — blunt one-length cut throughout' / 'face-framing layers starting at the chin, blending into the length' / 'heavy internal layers from the ear down for movement, invisible from the outside']",
+    "ends": "[INSERT END STYLE — describe how the ends are cut and how they sit, e.g. 'blunt straight-cut ends with no taper' / 'softly point-cut ends with feathered texture' / 'ends curl slightly inward toward the jaw in a natural C-shape']",
+    "bangs": "[INSERT BANGS — describe thickness, density, length, and how they sit on the forehead, e.g. 'no bangs' / 'thin wispy see-through fringe, sparse density, falling just above the eyebrows' / 'straight blunt fringe, dense and even, cut at eyebrow level' / 'soft curtain bangs parted at center, framing the face on both sides']",
+    "side_hair": "[INSERT SIDE HAIR — describe how the hair behaves along the sides of the face, e.g. 'side hair falls forward framing the face, resting against the cheek' / 'side hair tucked fully behind the ear' / 'side panels swept back, exposing the full face']",
+    "ear_visibility": "[INSERT EAR VISIBILITY — e.g. 'both ears fully covered' / 'left ear partially visible through thin side hair' / 'right ear fully exposed, left ear covered' / 'both ears fully exposed']",
+    "hair_line": "[INSERT HAIRLINE — e.g. 'natural soft rounded hairline, slightly uneven' / 'M-shaped hairline with slight recession at temples' / 'hairline not visible — fully covered by bangs']",
+    "volume": "[INSERT VOLUME — describe where volume sits and how much, e.g. 'flat at the crown, natural volume only at the ends' / 'full rounded volume throughout, especially at the sides' / 'heavy crown volume, tapered and flat at the nape']",
+    "texture": "[INSERT TEXTURE — describe the tactile and visual quality of the hair, e.g. 'silky smooth with a healthy shine, fine individual strands visible' / 'slightly coarse and full-bodied, matte finish' / 'natural slight texture, not overly smooth or rough']",
+    "flyaways": "[INSERT FLYAWAYS — e.g. 'no flyaways, hair is fully controlled and neat' / 'subtle fine flyaways at the crown and hairline, natural and unforced' / 'visible loose strands around the face from wind movement']",
+    "condition": "[INSERT HAIR CONDITION — e.g. 'healthy and glossy throughout' / 'natural matte finish, no product shine' / 'slightly dry and textured at the ends, healthy at the roots']",
+    "movement": "[INSERT MOVEMENT — describe how the hair moves or is positioned, e.g. 'completely still and set in place' / 'gentle natural movement at the ends only' / 'fully windswept — entire length swept to one side dynamically' / 'soft organic movement as if in a light breeze']",
+    "avoid": [
+      "[INSERT HAIR STYLE TO AVOID 1 — e.g. any curl or wave not present in the reference / overly styled or stiff appearance]",
+      "[INSERT HAIR STYLE TO AVOID 2 — e.g. flat 2D illustrated hair texture / unnaturally perfect or frozen movement]",
+      "[INSERT HAIR STYLE TO AVOID 3 — ADD OR REMOVE AS NEEDED]"
+    ]
+  },
+  "scene": {
+    "location": "[INSERT LOCATION — e.g. quiet outdoor stone steps / indoor cafe at night / open desert landscape]",
+    "environment": [
+      "[INSERT ENVIRONMENT DETAIL 1 — e.g. urban park]",
+      "[INSERT ENVIRONMENT DETAIL 2 — e.g. high-rise interior with glass window]",
+      "[INSERT ENVIRONMENT DETAIL 3 — ADD OR REMOVE AS NEEDED]"
+    ],
+    "details": [
+      "[INSERT SCENE DETAIL 1 — e.g. fallen leaves scattered around / bokeh city lights in background]",
+      "[INSERT SCENE DETAIL 2 — e.g. soft sunlight through trees / prismatic lens flare across frame]",
+      "[INSERT SCENE DETAIL 3 — ADD OR REMOVE AS NEEDED]"
+    ],
+    "background_rendering": {
+      "complexity": "[INSERT BACKGROUND COMPLEXITY — e.g. not overly busy / richly layered with light points]",
+      "focus": "[INSERT FOCUS INTENT — e.g. subject is the clear foreground center]",
+      "depth": "[INSERT DEPTH — e.g. soft background separation / strong bokeh blur]"
+    }
+  },
+  "wardrobe": {
+    "top": {
+      "type": "[INSERT TOP TYPE — e.g. blouse / crewneck sweater / off-shoulder top]",
+      "color": "[INSERT COLOR — e.g. white / deep black / ivory]",
+      "style": "[INSERT STYLE — e.g. clean feminine casual / dark elegant with ruffle details]",
+      "details": [
+        "[INSERT DESIGN DETAIL 1 — e.g. sheer chiffon fabric / minimal and refined]",
+        "[INSERT DESIGN DETAIL 2 — ADD OR REMOVE AS NEEDED]"
+      ]
+    },
+    "bottom": {
+      "type": "[INSERT BOTTOM TYPE — e.g. pleated skirt / wide trousers / not visible]",
+      "style": "[INSERT BOTTOM STYLE — e.g. soft casual preppy / matching top in tone]"
+    },
+    "legwear": {
+      "type": "[INSERT LEGWEAR — e.g. sheer stockings / ribbed socks / not visible]",
+      "tone": "[INSERT TONE — e.g. natural skin-tone beige / opaque black / n/a]",
+      "appearance": "[INSERT APPEARANCE — e.g. clean and subtle / not in frame]"
+    },
+    "shoes": {
+      "type": "[INSERT SHOE TYPE — e.g. flat shoes / loafers / not visible]",
+      "style": "[INSERT SHOE STYLE — e.g. simple plain flats / not in frame]",
+      "color": "[INSERT SHOE COLOR — e.g. black / n/a]",
+      "design": "[INSERT SHOE DESIGN — e.g. minimal and understated / n/a]"
+    },
+    "accessories": {
+      "item": "[INSERT ACCESSORY — e.g. small hoop earring / thin chain necklace / none]",
+      "design": "[INSERT ACCESSORY DESIGN DESCRIPTION — e.g. thin delicate gold hoop, minimal]",
+      "avoid": ["[INSERT ACCESSORY DETAIL TO AVOID — ADD OR REMOVE AS NEEDED]"]
+    },
+    "overall_style": [
+      "[INSERT OVERALL STYLE DIRECTION 1 — e.g. clean feminine casual]",
+      "[INSERT OVERALL STYLE DIRECTION 2 — ADD OR REMOVE AS NEEDED]"
+    ]
+  },
+  "pose": {
+    "description": "[INSERT POSE OVERVIEW — e.g. sitting on outdoor stairs / standing near window with body turned sideways]",
+    "camera_facing": "[INSERT CAMERA FACING — describe which surface of the body is presented toward the camera, e.g. 'full frontal — chest and face directly toward camera' / '3/4 front — body angled, one shoulder closer to camera' / 'side profile — body fully perpendicular to camera' / 'rear 3/4 — back mostly toward camera, face turning back']",
+    "body_axis_to_camera": "[INSERT BODY AXIS TO CAMERA — describe the angle between the body's central axis and the camera, e.g. 'body axis perpendicular to camera — full side profile' / 'body axis at approximately 45 degrees to camera — 3/4 view' / 'body axis parallel to camera — full frontal']",
+    "depth_direction": "[INSERT DEPTH DIRECTION — describe how the body occupies depth in the frame, e.g. 'body spreads horizontally across the frame with no depth — flat side profile' / 'body recedes into the frame at an angle — creates depth and dimension' / 'body fully faces camera — minimal depth, flat frontal plane']",
+    "camera_distance": "[INSERT CAMERA DISTANCE — describe the implied physical distance between the camera and the subject, and how it affects the feel of the image. e.g. 'close — approximately 1–1.5m, face and upper chest fill the frame intimately' / 'medium — approximately 2–3m, full upper body with breathing room' / 'far — approximately 4m+, subject appears within the environment' — this works together with focal_length to define scale and intimacy]",
+    "spatial_relationships": "[INSERT SPATIAL RELATIONSHIPS — describe the positional relationship between the subject and key objects or environment elements in the scene. e.g. 'subject seated on stairs, knees pulled toward chest, phone held at eye level approximately 30cm from face' / 'subject standing approximately 20cm from the glass window, body parallel to the window surface' / 'subject leaning against wall, right shoulder in contact with wall surface' — include distance estimates and directional relationships where relevant]",
+    "legs": "[INSERT LEG POSITION — e.g. both legs naturally folded / standing with weight evenly distributed]",
+    "arms": "[INSERT ARM POSITION — describe arm position AND note if it must look relaxed/natural, e.g. 'both arms raised forward, elbows gently bent — must look relaxed, not stiff']",
+    "hand_action": "[INSERT HAND DETAIL — e.g. one hand lightly touching ear / both hands holding phone naturally]",
+    "upper_body": "[INSERT UPPER BODY POSTURE — specify rotation angle if turning, e.g. 'torso turned approximately 45 degrees — do not exceed 60 degrees to avoid foreshortening']",
+    "head": "[INSERT HEAD DIRECTION — e.g. facing front / turned back over shoulder — NOTE: if head turns relative to body, specify that it must remain within anatomically natural range]",
+    "head_orientation": "[INSERT HEAD ORIENTATION — describe pitch, yaw, and roll separately based on the source image. Pitch: chin lifted, neutral, or lowered. Yaw: face turned left, right, or front. Roll: head tilted toward either shoulder or kept vertical. If head angle affects the expression, gaze, or mood, preserve it clearly. If not important, allow only small natural variation.]",
+    "neck_anatomy": "[INSERT NECK NOTE — always describe expected neck appearance for the pose, e.g. 'neck connects naturally to shoulder without stretching or distortion' / 'neck length and thickness must be realistic and proportional']",
+    "shoulder_anatomy": "[INSERT SHOULDER NOTE — describe shoulder state, e.g. 'shoulders relaxed, not raised or hunched' / 'shoulder line readable and not foreshortened awkwardly']",
+    "posture": "[INSERT POSTURE QUALITY — e.g. upright and natural / comfortable and relaxed without tension]",
+    "overall_impression": "[INSERT POSE OVERALL IMPRESSION — describe the scene feel, e.g. 'a real person in a quiet natural moment, pose must feel achievable and comfortable']",
+    "adjustment_rule": "[INSERT ADJUSTMENT PRIORITY — e.g. 'Prioritize anatomical correctness of neck and shoulder over achieving a perfectly frontal face. A slightly more side-angled face is preferable to an unnaturally twisted neck.']",
+    "head_gaze_expression_lock": "[INSERT HEAD-GAZE-EXPRESSION RELATIONSHIP — explain how head angle, iris direction, eyelid tension, and mouth expression work together. e.g. 'slightly lowered chin plus direct upward gaze creates a quiet, guarded expression; do not flatten into a neutral front-facing head'.]"
+  },
+  "lighting": {
+    "type": "[INSERT LIGHTING TYPE — e.g. soft natural daylight / low-key mixed night ambient / warm golden hour]",
+    "quality": "[INSERT LIGHT QUALITY — e.g. bright and gentle / low-key and directional / warm and dramatic]",
+    "source": "[INSERT LIGHT SOURCE — describe direction clearly, e.g. 'sunlight from upper left' / 'city light through window from front-right of subject']",
+    "skin_lighting_behavior": {
+      "lit_side": "[INSERT LIT SIDE SKIN — describe how the skin looks on the side facing the light source, including color temperature effect, e.g. 'cool blue-white city light shifts skin tone cooler on this side' / 'warm golden sunlight gives a peachy highlight on the cheek']",
+      "shadow_side": "[INSERT SHADOW SIDE SKIN — describe the opposite side, e.g. 'deep warm shadow, retaining slight ambient bounce' / 'soft cool shadow with no fill']",
+      "transition": "[INSERT TRANSITION — e.g. 'gradual and soft light-to-shadow transition across the face' / 'clean but not harsh falloff']",
+      "overall_skin_tone": "[INSERT OVERALL NOTE — always clarify that skin tone must vary across the face based on lighting, e.g. 'skin must NOT appear the same color all over — lit areas reflect the light source color, shadows retain depth and warmth']",
+      "avoid": [
+        "flat evenly-lit skin with no directional shading",
+        "skin tone that does not respond to the light source color temperature",
+        "[INSERT ADDITIONAL SKIN LIGHTING TO AVOID — ADD OR REMOVE AS NEEDED]"
+      ]
+    },
+    "effects": [
+      "[INSERT LIGHTING EFFECT 1 — e.g. natural highlights on skin and hair]",
+      "[INSERT LIGHTING EFFECT 2 — e.g. soft shadow patterns on ground]",
+      "[INSERT LIGHTING EFFECT 3 — ADD OR REMOVE AS NEEDED]"
+    ],
+    "avoid": [
+      "[INSERT LIGHTING TO AVOID 1 — e.g. harsh direct sunlight / flat even lighting]",
+      "[INSERT LIGHTING TO AVOID 2 — e.g. studio strobe / overexposed highlights on skin]",
+      "[INSERT LIGHTING TO AVOID 3 — ADD OR REMOVE AS NEEDED]"
+    ]
+  },
+  "camera": {
+    "composition": "[INSERT COMPOSITION TYPE — e.g. vertical outdoor lifestyle portrait / cinematic indoor night portrait]",
+    "angle": "[INSERT CAMERA ANGLE — e.g. natural eye-level / slightly above / very slight low angle / slight low angle looking up]",
+    "focal_length": "[INSERT FOCAL LENGTH — choose based on how you want the face and body to feel. e.g. '85mm' for natural flattering portrait compression / '50mm' for balanced environmental portrait / '35mm' for wider environmental context — avoid wide angle under 35mm for close portrait shots as it distorts facial features]",
+    "shot_type": "[INSERT SHOT TYPE — defines how much of the body is in frame. e.g. 'close-up' (face only) / 'bust shot' (head to chest) / 'waist-up' (head to waist) / 'three-quarter shot' (head to mid-thigh) / 'full body' (head to feet)]",
+    "subject_position": "[INSERT SUBJECT POSITION IN FRAME — e.g. centered / slightly left of center / placed on left vertical third / right third — consider leaving breathing room in the direction the subject is facing or looking]",
+    "rule_of_thirds": "[INSERT RULE OF THIRDS NOTE — e.g. 'subject eyes placed on upper horizontal third' / 'subject body aligned along left vertical third with negative space to the right' / 'centered composition, rule of thirds not applied']",
+    "framing_element": "[OPTIONAL — INSERT IF REQUIRED — describe any environmental element that naturally frames the subject, e.g. 'window frame partially visible on left edge creates natural border' / 'tree branches softly framing the upper corners' / none]",
+    "negative_space": "[INSERT NEGATIVE SPACE — describe where empty space should exist and what it contributes, e.g. 'open sky above the subject adds breathing room and scale' / 'negative space to the right in the direction of the gaze creates visual tension' / 'minimal negative space, subject fills the frame']",
+    "framing": {
+      "focus": [
+        "[INSERT FRAMING FOCUS ELEMENT 1 — e.g. identity-preserved face]",
+        "[INSERT FRAMING FOCUS ELEMENT 2 — e.g. outfit and accessory details]",
+        "[INSERT FRAMING FOCUS ELEMENT 3 — ADD OR REMOVE AS NEEDED]"
+      ]
+    },
+    "depth_of_field": "[INSERT DOF — e.g. shallow depth of field with soft background bokeh / medium depth with subject sharp and background slightly blurred / deep focus with full scene sharp]",
+    "style": "[INSERT CAMERA STYLE — e.g. natural lifestyle snapshot / cinematic editorial / warm filmic / clean commercial portrait]"
+  },
+  "color_grading": {
+    "style": "[INSERT COLOR GRADE STYLE — e.g. clean soft outdoor daylight / dark cinematic night tone / warm golden desert]",
+    "palette": [
+      "[INSERT PALETTE COLOR 1 — e.g. white / deep black / sandy amber]",
+      "[INSERT PALETTE COLOR 2 — e.g. stone gray / cool dark navy]",
+      "[INSERT PALETTE COLOR 3 — ADD OR REMOVE AS NEEDED]"
+    ],
+    "contrast": "[INSERT CONTRAST LEVEL — e.g. soft / medium / high contrast with deep shadows]",
+    "saturation": "[INSERT SATURATION — e.g. natural and fresh / moderately desaturated / warm and vivid]",
+    "processing": "[INSERT PROCESSING FEEL — e.g. realistic and lightly emotional / cinematic filmic / natural with slight grain]"
+  },
+  "anatomy_and_proportion": {
+    "_note": "Fill this section based on the pose. Adjust the specific concerns to match what the pose might stress — e.g. a head-turn pose needs neck notes, a seated pose needs leg/hip notes, a raised-arm pose needs arm-length notes.",
+    "head_size": "[INSERT HEAD SIZE NOTE — always include, e.g. 'head size must be anatomically proportional to the body — approximately 1/7 to 1/8 of total body height, do not render oversized or undersized head']",
+    "neck": "[INSERT NECK NOTE — always include, e.g. 'neck must be realistic in length and thickness, connecting smoothly to the shoulder without elongation or distortion']",
+    "shoulder_width": "[INSERT SHOULDER NOTE — e.g. 'shoulder width proportional to the head — approximately 2 to 2.5 head widths, natural build']",
+    "torso": "[INSERT TORSO NOTE — e.g. 'torso length and width must be realistic, no compression or stretching from body rotation']",
+    "arm_length": "[INSERT ARM NOTE — include if arms are prominent in the pose, e.g. 'arms must be full natural length — elbows at realistic height relative to the torso']",
+    "hand_size": "[INSERT HAND NOTE — include if hands are visible, e.g. 'hands proportional to the forearm, not oversized or undersized']",
+    "legs_and_hips": "[INSERT LEG/HIP NOTE — include if lower body is visible, e.g. 'hip width and leg length must be realistic, no distortion from sitting or standing angle']",
+    "overall_body_proportions": "[INSERT OVERALL NOTE — always include, e.g. 'the full visible figure must follow realistic human proportions — no foreshortening artifacts, no perspective distortion making any body part unnaturally large or small']",
+    "avoid": [
+      "head too large or too small relative to body",
+      "neck that appears stretched, broken, or distorted",
+      "shoulders unnaturally narrow or wide",
+      "[INSERT POSE-SPECIFIC ANATOMY TO AVOID — e.g. 'arms that appear too short or too long' / 'torso compressed from rotation' — ADD OR REMOVE AS NEEDED]"
+    ]
+  },
+  "quality": [
+    "photorealistic",
+    "high_detail",
+    "realistic_skin_texture",
+    "natural_hair_detail",
+    "realistic_fabric_texture",
+    "realistic_anatomy"
+  ],
+  "negative_prompt": [
+    "overly cute expression",
+    "exaggerated smile",
+    "playful exaggerated face",
+    "heavy makeup",
+    "glamour styling",
+    "studio lighting",
+    "flat even skin lighting",
+    "skin tone unaffected by light color temperature",
+    "overexposed skin",
+    "plastic skin",
+    "over-smoothed skin",
+    "head too large",
+    "head too small",
+    "disproportionate head",
+    "elongated neck",
+    "neck distortion",
+    "unnatural head rotation",
+    "bad anatomy",
+    "extra fingers",
+    "missing fingers",
+    "deformed hands",
+    "distorted arms",
+    "distorted legs",
+    "unrealistic proportions",
+    "foreshortening artifacts",
+    "cluttered background",
+    "anime",
+    "anime style",
+    "cartoon",
+    "illustration",
+    "illustrated",
+    "digital painting",
+    "digital art",
+    "2D art",
+    "2D style",
+    "cel shading",
+    "flat shading",
+    "manga",
+    "animated",
+    "animated style",
+    "stylized",
+    "stylized face",
+    "stylized eyes",
+    "oversized eyes",
+    "enlarged eyes",
+    "exaggerated eye size",
+    "eye shine",
+    "eye highlight orbs",
+    "painted skin",
+    "painted texture",
+    "illustrated hair",
+    "flat hair shading",
+    "non-photorealistic",
+    "render",
+    "cgi",
+    "3D render",
+    "watermark",
+    "logo",
+    "text"
+  ]
+}

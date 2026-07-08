@@ -1,0 +1,24 @@
+# GJC 워크플로 상태 (내부용)
+.gjc/
+
+# AI 도구 로컬 설정/아티팩트 (커밋 금지)
+.claude/
+.anthropic/
+.cursor/
+
+# 발표 기획/스크립트/메모 — 비공개(옵시디언 vault 보관), 공개 리포 제외
+발표기획.md
+발표스크립트.md
+발표_아이디어_메모.md
+*.md
+
+# 원본 이미지 — 웹용 .webp로 최적화 완료, 로컬 백업으로만 보관
+*.png
+*.jpg
+*.jpeg
+
+# OS / 에디터 잡파일
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
