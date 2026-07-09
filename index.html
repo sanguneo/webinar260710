@@ -383,11 +383,15 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        animation: sm-up 18s ease-in-out infinite;
+        animation: sm-up 18s linear infinite;
         will-change: transform;
       }
       .sm-col.down {
         animation-name: sm-down;
+      }
+      .slide:not(.is-active) .sm-col,
+      body.deck-hidden .sm-col {
+        animation-play-state: paused;
       }
       .sm-col img {
         width: 100%;
@@ -2649,6 +2653,9 @@ Rules:
           goTo(idx);
         }
         window.addEventListener("hashchange", readHash);
+        document.addEventListener("visibilitychange", function () {
+          document.body.classList.toggle("deck-hidden", document.hidden);
+        });
         window.addEventListener("resize", resize);
         resize();
         readHash();
