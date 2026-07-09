@@ -2560,8 +2560,28 @@ Rules:
             } catch (e) {}
           }
         }
+        var numBuf = "",
+          numTimer = null;
         document.addEventListener("keydown", function (e) {
           if (document.querySelector(".lightbox.open, .genmodal.open")) return;
+          if (/^[0-9]$/.test(e.key)) {
+            numBuf += e.key;
+            clearTimeout(numTimer);
+            numTimer = setTimeout(function () {
+              numBuf = "";
+            }, 2000);
+            return;
+          }
+          if (e.key === "Enter") {
+            if (numBuf) {
+              e.preventDefault();
+              var n = parseInt(numBuf, 10);
+              clearTimeout(numTimer);
+              numBuf = "";
+              if (n >= 1 && n <= total) goTo(n - 1);
+            }
+            return;
+          }
           if (
             e.key === "ArrowRight" ||
             e.key === " " ||
@@ -2651,7 +2671,9 @@ Rules:
             open(c.getAttribute("data-img"));
           });
         });
-        lb.addEventListener("click", close);
+        lb.addEventListener("click", function (e) {
+          if (e.target === lb) close();
+        });
         document.addEventListener(
           "keydown",
           function (e) {
@@ -2688,7 +2710,9 @@ Rules:
             flb.classList.add("open");
           });
         });
-        flb.addEventListener("click", closeF);
+        flb.addEventListener("click", function (e) {
+          if (e.target === flb) closeF();
+        });
         document.addEventListener(
           "keydown",
           function (e) {
@@ -2728,7 +2752,9 @@ Rules:
             openR();
           }
         });
-        rl.addEventListener("click", closeR);
+        rl.addEventListener("click", function (e) {
+          if (e.target === rl) closeR();
+        });
         document.addEventListener(
           "keydown",
           function (e) {
@@ -2762,7 +2788,9 @@ Rules:
           e.stopPropagation();
           openQ();
         });
-        lb.addEventListener("click", closeQ);
+        lb.addEventListener("click", function (e) {
+          if (e.target === lb) closeQ();
+        });
         document.addEventListener(
           "keydown",
           function (e) {
