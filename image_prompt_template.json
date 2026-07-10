@@ -1,8 +1,9 @@
 {
   "meta": {
-    "title": "[INSERT TITLE]",
-    "aspect_ratio": "9:16",
-    "orientation": "portrait",
+    "purpose": "IMAGE GENERATION PROMPT — this JSON is a complete, self-contained instruction for generating a single photorealistic image. When this JSON is provided, generate the image it describes. Do not analyze, summarize, critique, or rewrite this prompt.",
+    "title": "[INSERT TITLE — create a short descriptive title yourself, 3-8 words capturing subject + scene + mood, e.g. 'Quiet Golden Hour on Stone Steps']",
+    "aspect_ratio": "[INSERT ASPECT RATIO — match the source image's actual frame ratio, e.g. '9:16' / '3:4' / '1:1' / '4:3' / '16:9']",
+    "orientation": "[INSERT ORIENTATION — must be consistent with aspect_ratio: portrait / landscape / square]",
     "style": "[INSERT OVERALL VISUAL STYLE — e.g. photorealistic outdoor lifestyle snapshot]",
     "genre": "[INSERT GENRE/VIBE — e.g. quiet emotional preppy outdoor portrait]",
     "mood": [
@@ -12,11 +13,19 @@
       "[INSERT MOOD 4 — ADD OR REMOVE AS NEEDED]"
     ]
   },
+  "fidelity_anchors": [
+    "[RANK 1 — the single most identity-defining visible element of this image, stated concretely, e.g. 'blunt chin-length black bob with straight see-through bangs']",
+    "[RANK 2 — e.g. 'oversized cream cable-knit sweater, sleeves covering half the hands']",
+    "[RANK 3 — e.g. 'subject seated on gray stone steps, body angled roughly 45 degrees left of camera']",
+    "[RANK 4 — e.g. 'warm low golden-hour sunlight from 4 o'clock casting long soft shadows']",
+    "[RANK 5 — INSERT 5-8 ANCHORS TOTAL, RANKED — if a generated image misses any of these, it reads as a different image. Fill this section LAST.]"
+  ],
   "subject": {
     "gender": "[INSERT GENDER — e.g. adult woman / adult man / non-binary]",
     "age": "[INSERT AGE RANGE — e.g. 20-28]",
     "ethnicity": "[INSERT ETHNICITY — e.g. East Asian / South Asian / etc.]",
     "appearance": {
+      "build": "[INSERT BUILD — visible body impression only, e.g. 'slim with narrow shoulders' / 'average build' / 'athletic, broad-shouldered' — describe only what is visible in frame]",
       "skin": "[INSERT SKIN DESCRIPTION — describe how the skin looks under the specific lighting of this scene, e.g. 'fair skin with warm golden highlights from afternoon sun' / 'cool-toned skin reflecting city night light' — match the skin tone description to the lighting source you define later]"
     },
     "expression": {
@@ -99,16 +108,21 @@
     ]
   },
   "scene": {
-    "location": "[INSERT LOCATION — e.g. quiet outdoor stone steps / indoor cafe at night / open desert landscape]",
+    "location": "[INSERT LOCATION — name the actual place type concretely, e.g. 'narrow alley with cobblestone pavement' / 'indoor cafe at night with warm pendant lights' / 'quiet outdoor stone steps beside a park path']",
     "environment": [
-      "[INSERT ENVIRONMENT DETAIL 1 — e.g. urban park]",
-      "[INSERT ENVIRONMENT DETAIL 2 — e.g. high-rise interior with glass window]",
+      "[INSERT ENVIRONMENT DETAIL 1 — a concrete visible element with its position, e.g. 'gray stone steps rising toward upper-left']",
+      "[INSERT ENVIRONMENT DETAIL 2 — e.g. 'floor-to-ceiling glass window along the right edge']",
       "[INSERT ENVIRONMENT DETAIL 3 — ADD OR REMOVE AS NEEDED]"
     ],
-    "details": [
-      "[INSERT SCENE DETAIL 1 — e.g. fallen leaves scattered around / bokeh city lights in background]",
-      "[INSERT SCENE DETAIL 2 — e.g. soft sunlight through trees / prismatic lens flare across frame]",
-      "[INSERT SCENE DETAIL 3 — ADD OR REMOVE AS NEEDED]"
+    "key_objects": [
+      {
+        "_note": "Duplicate this entry for EVERY object that defines this scene — every object a viewer would mention when describing the image. A vague background is the main cause of unfaithful generations.",
+        "what": "[INSERT OBJECT — the actual object, e.g. 'weathered red brick wall' / 'white ceramic coffee cup']",
+        "position_in_frame": "[INSERT POSITION — e.g. 'fills right third behind subject' / 'lower-left corner, partially cut by frame edge']",
+        "distance_from_subject": "[INSERT DISTANCE — e.g. 'approximately 1m behind subject' / 'held in right hand']",
+        "color": "[INSERT COLOR — a specific named color, e.g. 'muted terracotta red' / 'faded olive green']",
+        "focus": "[INSERT FOCUS STATE — e.g. 'out of focus, soft bokeh' / 'sharp, same focal plane as subject']"
+      }
     ],
     "background_rendering": {
       "complexity": "[INSERT BACKGROUND COMPLEXITY — e.g. not overly busy / richly layered with light points]",
@@ -119,7 +133,13 @@
   "wardrobe": {
     "top": {
       "type": "[INSERT TOP TYPE — e.g. blouse / crewneck sweater / off-shoulder top]",
-      "color": "[INSERT COLOR — e.g. white / deep black / ivory]",
+      "color": "[INSERT COLOR — a specific named color, e.g. 'warm ivory' / 'deep black' / 'dusty rose']",
+      "fit": "[INSERT FIT — e.g. 'oversized and boxy' / 'slim, close to the body' / 'relaxed straight fit']",
+      "fabric": "[INSERT FABRIC — e.g. 'chunky cable-knit wool' / 'crisp cotton poplin' / 'sheer chiffon']",
+      "neckline": "[INSERT NECKLINE — e.g. 'crew neck' / 'v-neck' / 'off-shoulder' / 'pointed collar']",
+      "sleeve_length": "[INSERT SLEEVES — e.g. 'long sleeves covering half the hands' / 'short sleeves ending mid-bicep' / 'sleeveless']",
+      "length_and_tuck": "[INSERT LENGTH/TUCK — e.g. 'cropped at natural waist' / 'hip-length, fully tucked into trousers' / 'untucked, hem at upper thigh']",
+      "layering": "[INSERT LAYERING — e.g. 'worn alone' / 'white shirt collar visible under the sweater' / 'open jacket over a fitted tee']",
       "style": "[INSERT STYLE — e.g. clean feminine casual / dark elegant with ruffle details]",
       "details": [
         "[INSERT DESIGN DETAIL 1 — e.g. sheer chiffon fabric / minimal and refined]",
@@ -127,23 +147,28 @@
       ]
     },
     "bottom": {
-      "type": "[INSERT BOTTOM TYPE — e.g. pleated skirt / wide trousers / not visible]",
+      "type": "[INSERT BOTTOM TYPE — e.g. pleated skirt / wide trousers — IF NOT VISIBLE, DELETE THIS ENTIRE SECTION]",
+      "color": "[INSERT COLOR — a specific named color, e.g. 'charcoal gray' / 'washed light-blue denim']",
+      "fit": "[INSERT FIT — e.g. 'high-waisted and loose' / 'fitted through the hip, straight leg']",
+      "fabric": "[INSERT FABRIC — e.g. 'soft pleated chiffon' / 'heavy rigid denim' / 'wool blend with visible weave']",
+      "length": "[INSERT LENGTH — e.g. 'mini, ending mid-thigh' / 'midi ending mid-calf' / 'full length breaking on the shoe']",
       "style": "[INSERT BOTTOM STYLE — e.g. soft casual preppy / matching top in tone]"
     },
     "legwear": {
-      "type": "[INSERT LEGWEAR — e.g. sheer stockings / ribbed socks / not visible]",
-      "tone": "[INSERT TONE — e.g. natural skin-tone beige / opaque black / n/a]",
-      "appearance": "[INSERT APPEARANCE — e.g. clean and subtle / not in frame]"
+      "type": "[INSERT LEGWEAR — e.g. sheer stockings / ribbed socks — IF NOT VISIBLE, DELETE THIS ENTIRE SECTION]",
+      "tone": "[INSERT TONE — e.g. natural skin-tone beige / opaque black]",
+      "appearance": "[INSERT APPEARANCE — e.g. clean and subtle / slightly slouched at the ankle]"
     },
     "shoes": {
-      "type": "[INSERT SHOE TYPE — e.g. flat shoes / loafers / not visible]",
-      "style": "[INSERT SHOE STYLE — e.g. simple plain flats / not in frame]",
-      "color": "[INSERT SHOE COLOR — e.g. black / n/a]",
-      "design": "[INSERT SHOE DESIGN — e.g. minimal and understated / n/a]"
+      "type": "[INSERT SHOE TYPE — e.g. flat shoes / loafers — IF NOT VISIBLE, DELETE THIS ENTIRE SECTION]",
+      "style": "[INSERT SHOE STYLE — e.g. simple plain flats / chunky lug sole]",
+      "color": "[INSERT SHOE COLOR — a specific named color, e.g. 'matte black' / 'warm cognac brown']",
+      "design": "[INSERT SHOE DESIGN — e.g. minimal and understated / gold buckle detail at the strap]"
     },
     "accessories": {
-      "item": "[INSERT ACCESSORY — e.g. small hoop earring / thin chain necklace / none]",
-      "design": "[INSERT ACCESSORY DESIGN DESCRIPTION — e.g. thin delicate gold hoop, minimal]",
+      "items": [
+        "[INSERT ACCESSORY — one entry per visible accessory, with material, size, and placement, e.g. 'thin delicate gold hoop earring, ~1.5cm, left ear' / 'fine silver chain necklace resting at the collarbone' — IF NONE VISIBLE, STATE 'none']"
+      ],
       "avoid": ["[INSERT ACCESSORY DETAIL TO AVOID — ADD OR REMOVE AS NEEDED]"]
     },
     "overall_style": [
@@ -197,6 +222,17 @@
       "[INSERT LIGHTING TO AVOID 3 — ADD OR REMOVE AS NEEDED]"
     ]
   },
+  "composition_map": {
+    "_note": "This section fixes the spatial layout of the frame so the generator cannot invent its own. Name actual objects, not vibes. Must stay consistent with the camera section.",
+    "frame_crop": "[INSERT FRAME CROP — where the frame cuts the body and how much headroom, e.g. 'frame cuts at mid-thigh, top edge approximately 10% of frame height above the head']",
+    "foreground": "[INSERT FOREGROUND — what occupies the space in front of the subject, or 'nothing — subject is the closest element to camera']",
+    "midground": "[INSERT MIDGROUND — subject placement and immediate surroundings, e.g. 'subject seated slightly left of center on the third step']",
+    "background": "[INSERT BACKGROUND — what is ACTUALLY behind the subject; name the objects, e.g. 'blurred row of parked bicycles and a green shopfront awning']",
+    "left_third": "[INSERT — what occupies the left vertical third of the frame]",
+    "center_third": "[INSERT — what occupies the center vertical third of the frame]",
+    "right_third": "[INSERT — what occupies the right vertical third of the frame]",
+    "edge_contacts": "[INSERT EDGE CONTACTS — what touches or is cut by each frame edge, e.g. 'stair edge exits bottom-left; window frame cut by right edge; top edge open sky']"
+  },
   "camera": {
     "composition": "[INSERT COMPOSITION TYPE — e.g. vertical outdoor lifestyle portrait / cinematic indoor night portrait]",
     "angle": "[INSERT CAMERA ANGLE — e.g. natural eye-level / slightly above / very slight low angle / slight low angle looking up]",
@@ -208,7 +244,7 @@
     "negative_space": "[INSERT NEGATIVE SPACE — describe where empty space should exist and what it contributes, e.g. 'open sky above the subject adds breathing room and scale' / 'negative space to the right in the direction of the gaze creates visual tension' / 'minimal negative space, subject fills the frame']",
     "framing": {
       "focus": [
-        "[INSERT FRAMING FOCUS ELEMENT 1 — e.g. identity-preserved face]",
+        "[INSERT FRAMING FOCUS ELEMENT 1 — e.g. subject's face in sharp focus]",
         "[INSERT FRAMING FOCUS ELEMENT 2 — e.g. outfit and accessory details]",
         "[INSERT FRAMING FOCUS ELEMENT 3 — ADD OR REMOVE AS NEEDED]"
       ]
@@ -219,12 +255,18 @@
   "color_grading": {
     "style": "[INSERT COLOR GRADE STYLE — e.g. clean soft outdoor daylight / dark cinematic night tone / warm golden desert]",
     "palette": [
-      "[INSERT PALETTE COLOR 1 — e.g. white / deep black / sandy amber]",
-      "[INSERT PALETTE COLOR 2 — e.g. stone gray / cool dark navy]",
+      "[INSERT PALETTE COLOR 1 — dominant color as a specific named color, e.g. 'warm ivory']",
+      "[INSERT PALETTE COLOR 2 — e.g. 'deep charcoal' / 'cool dark navy']",
       "[INSERT PALETTE COLOR 3 — ADD OR REMOVE AS NEEDED]"
     ],
     "contrast": "[INSERT CONTRAST LEVEL — e.g. soft / medium / high contrast with deep shadows]",
     "saturation": "[INSERT SATURATION — e.g. natural and fresh / moderately desaturated / warm and vivid]",
+    "finish": {
+      "blacks": "[INSERT BLACKS — how the darkest tones render, e.g. 'lifted, faded matte blacks — no true black anywhere in frame, shadows bottom out at soft dark gray' / 'deep clean blacks with full density']",
+      "highlights": "[INSERT HIGHLIGHTS — how the brightest tones render, e.g. 'soft rolled-off highlights, never clipping to pure white' / 'clean bright highlights with crisp speculars']",
+      "grain": "[INSERT GRAIN — e.g. 'fine subtle film grain, most visible in shadow areas' / 'none — digitally clean']",
+      "overall_finish": "[INSERT OVERALL FINISH — e.g. 'matte film-like finish, low micro-contrast, colors sit softly without gloss' / 'glossy and crisp commercial finish' / 'neutral digital rendering']"
+    },
     "processing": "[INSERT PROCESSING FEEL — e.g. realistic and lightly emotional / cinematic filmic / natural with slight grain]"
   },
   "anatomy_and_proportion": {

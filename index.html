@@ -1206,6 +1206,7 @@
         flex-direction: column;
         gap: 15px;
         border-right: 1px solid var(--c-line);
+        min-width: 0;
       }
       .gen-grp {
         display: flex;
@@ -1239,6 +1240,8 @@
         border-radius: 8px;
         padding: 8px 10px;
         outline: none;
+        min-width: 0;
+        max-width: 100%;
       }
       .gen-field input:focus,
       .gen-field select:focus {
@@ -1254,6 +1257,7 @@
         flex-direction: column;
         min-height: 0;
         background: #17121b;
+        min-width: 0;
       }
       .gen-pre-head {
         display: flex;
@@ -1286,7 +1290,9 @@
         font-family: var(--f-mono);
         font-size: 13px;
         line-height: 1.7;
-        white-space: pre;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        min-width: 0;
         color: #ecdfce;
       }
       .gen-field textarea {
@@ -1300,6 +1306,8 @@
         outline: none;
         resize: vertical;
         line-height: 1.5;
+        min-width: 0;
+        max-width: 100%;
       }
       .gen-field textarea:focus {
         border-color: var(--c-accent);
@@ -1331,6 +1339,40 @@
       }
       .gen-open-btn.alt:hover {
         background: #4a3f2d;
+      }
+      .analyze-tabs {
+        display: flex;
+        gap: 8px;
+        padding: 12px 22px;
+        background: var(--c-card);
+        border-bottom: 1px solid var(--c-line);
+      }
+      .analyze-tab {
+        font-family: var(--f-mono);
+        font-size: 12.5px;
+        color: var(--c-accent-2);
+        background: rgba(201, 130, 60, 0.08);
+        border: 1px solid rgba(201, 130, 60, 0.3);
+        border-radius: 8px;
+        padding: 7px 14px;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+      .analyze-tab:hover {
+        background: rgba(201, 130, 60, 0.16);
+      }
+      .analyze-tab.active {
+        background: var(--c-accent-2);
+        color: var(--c-cream);
+        border-color: var(--c-accent-2);
+      }
+      .gen-fixed {
+        opacity: 0.65;
+        font-size: 11px !important;
+        cursor: default;
+        line-height: 1.5;
       }
       .analyze-body {
         display: flex;
@@ -2057,7 +2099,7 @@
         <section
           class="slide paper slide--split"
           data-slide="16"
-          data-notes="아까 그 실제 템플릿(1-depth 12개: meta·subject·hair·scene·wardrobe·pose·lighting·camera·color_grading·anatomy·quality·negative_prompt)을 그대로 채우는 생성기예요. 칸을 채우면 실시간 JSON, 안 채운 항목은 자동 제외. 라이브로 몇 칸만 채워 JSON 뽑는 걸 보여주기."
+          data-notes="아까 그 실제 템플릿(1-depth 14개: meta·fidelity_anchors·subject·hair·scene·wardrobe·pose·lighting·composition_map·camera·color_grading·anatomy_and_proportion·quality·negative_prompt)을 그대로 채우는 생성기예요. 칸을 채우면 실시간 JSON(안 채운 항목 자동 제외), 이지모드는 압축본으로 나와요. 라이브로 몇 칸만 채워 뽑기."
         >
           <header class="slide-chrome">
             <span class="label">결실 · 결 · 선물</span
@@ -2074,10 +2116,11 @@
                 나중에 <b class="accent">한 부분만 바꾸기</b>도 쉬워요.
               </p>
               <div class="gen-sections">
-                <span>meta</span><span>subject</span><span>hair</span
-                ><span>scene</span><span>wardrobe</span><span>pose</span
-                ><span>lighting</span><span>camera</span
-                ><span>color_grading</span><span>anatomy</span
+                <span>meta</span><span>fidelity_anchors</span
+                ><span>subject</span><span>hair</span><span>scene</span
+                ><span>wardrobe</span><span>pose</span><span>lighting</span
+                ><span>composition_map</span><span>camera</span
+                ><span>color_grading</span><span>anatomy_and_proportion</span
                 ><span>quality</span><span>negative_prompt</span>
               </div>
             </div>
@@ -2085,10 +2128,11 @@
               <div class="prompt-card" style="width: 100%">
                 <span class="plabel">이렇게 나와요</span>
                 <div class="ptext">
-                  {<br />&nbsp;&nbsp;"meta": { "aspect_ratio": "9:16", … },<br />&nbsp;&nbsp;"subject":
-                  { "expression": {…}, "gaze": {…} },<br />&nbsp;&nbsp;"hair":
-                  {…}, "scene": {…}, "lighting": {…},<br />&nbsp;&nbsp;"camera":
-                  {…}, "negative_prompt": [ … ]<br />}<br /><span
+                  {<br />&nbsp;&nbsp;"meta": { "purpose": …, "aspect_ratio": "9:16", … },<br />&nbsp;&nbsp;"fidelity_anchors":
+                  [ … ],<br />&nbsp;&nbsp;"subject": { "expression": {…}, "gaze": {…} },<br />&nbsp;&nbsp;"hair":
+                  {…}, "scene": { "key_objects": […] },<br />&nbsp;&nbsp;"wardrobe":
+                  {…}, "pose": {…}, "lighting": {…},<br />&nbsp;&nbsp;"composition_map":
+                  {…}, "camera": {…},<br />&nbsp;&nbsp;"color_grading": { "finish": {…} },<br />&nbsp;&nbsp;"negative_prompt": [ … ]<br />}<br /><span
                     style="color: var(--c-ink-3)"
                     >&#47;&#47; 안 채운 항목은 자동 제외</span
                   >
@@ -2106,7 +2150,7 @@
         <section
           class="slide paper slide--statement"
           data-slide="17"
-          data-notes="말로만 하면 안 믿기시죠? 지금 바로. 아까 보여드린 JSON 생성기를 라이브로 채워 프롬프트를 만들거나, 이미지 하나를 '그냥 분석 맡기기'로 프롬프트화 → 그대로 이미지 생성. (지연/실패 시 백업 이미지·녹화로 전환)"
+          data-notes="말로만 하면 안 믿기시죠? 지금 바로. 생성기는 템플릿 형식 그대로(이지모드는 압축본) JSON을 뽑고, '그냥 분석 맡기기'는 이미지 하나로 full(전체 템플릿)·일반(압축)·재해석(압축) 중 골라 프롬프트화 → 그대로 생성. (지연/실패 시 백업 이미지·녹화로 전환)"
         >
           <header class="slide-chrome">
             <span class="label">라이브 데모</span><span class="label">17</span>
@@ -2131,7 +2175,7 @@
                 🔍 그냥 분석 맡기기
               </button>
               <p class="caption muted">
-                이미지 하나 던지면 AI가 프롬프트를 뽑아줘요 — 그걸로 바로 생성.
+                이미지 하나 던지면 AI가 프롬프트로 — full·일반·재해석 세 지시서 중 선택.
               </p>
             </div>
           </div>
@@ -2419,37 +2463,27 @@ professional magazine photography. <span class="hl">--ar 9:16</span></pre>
           </button>
         </div>
         <div class="analyze-body">
+          <div class="analyze-tabs">
+            <button class="analyze-tab active" data-instr="full">
+              full · 전체 템플릿
+            </button>
+            <button class="analyze-tab" data-instr="normal">일반 · 압축</button>
+            <button class="analyze-tab" data-instr="reinterpret">
+              재해석 · 압축
+            </button>
+          </div>
           <div class="analyze-top">
             <div class="gen-pre-head">
               <span class="gp-label">지시문 — 이미지와 함께 AI에 붙여넣기</span
               ><button class="gen-copy" id="analyze-copy">복사</button>
             </div>
-            <pre class="analyze-instr" id="analyze-instr">
-Analyze the attached image(s) and fill in the JSON template file
-
-Rules:
-1. If a single image is provided, fill in the template based solely on what is visible in that image. If multiple images are provided, prioritize elements that appear consistently across all images. For elements that differ between images (pose, background, outfit, etc.), use the most dominant image as the reference. If differences are significant, note them in "e.g. A or B" format.
-2. If something is not visible, write "not visible" or "n/a".
-3. If the image is an illustration or anime-style artwork, translate all descriptions into how the subject would appear in a real photograph — no illustrated or stylized language.
-4. Do not create, fill, preserve, or reference any face-lock, facial identity reference, identity preservation, same-person likeness, or reference-image identity fields. The source image is used only for visible visual description, not for face identity. Do not describe the subject as the same person as any reference image. Do not include `reference_identity`, `face_lock_keywords`, `facial_identity`, identity-preservation instructions, or identity-lock keywords in the final output.
-5. For `lighting`, analyze in the following order: ① Identify the light source type (natural / artificial / mixed) and time of day or environment. ② Specify the direction of the light source using clock-position relative to the subject (e.g. coming from 10 o'clock, slightly above). ③ Assess the quality of the light — soft and diffused, or hard and directional. ④ In `skin_lighting_behavior`, describe the color temperature shift on the lit side and shadow side specifically — not just "bright / dark" but how the color temperature actually changes (e.g. "lit side receives a cool blue-white cast from the city glow", "shadow side falls into a deep warm-neutral tone"). ⑤ Describe how light interacts with the hair and clothing. ⑥ Describe the background lighting — whether it is bright or dark relative to the subject, and the degree of brightness contrast between subject and background. If multiple images are provided with different lighting, select the most desirable atmosphere and state the reason in one sentence.
-6. For `expression`, analyze in the following order: ① overall_impression — before breaking down any individual feature, describe the expression as a single felt quality in one or two sentences. This sets the emotional context for everything else. ② emotion_keywords — choose 3–5 single words that carry visual and emotional weight and that a generative model can anchor to (e.g. "serene, still, inward, unguarded"). ③ eyebrows — position, arch shape, tension level, distance between brows. ④ eyelids — degree of openness, heaviness, tension. ⑤ eye_direction — the actual direction the irises are pointing. ⑥ mouth_detail — whether the lips are closed or parted, approximate gap in mm if parted, direction of mouth corners, muscle tension around the mouth. ⑦ jaw — tension level, whether the teeth are touching or not. ⑧ facial_muscles — overall state of relaxation or tension across the entire face. The overall_impression and emotion_keywords must always come first and must read as a coherent emotional whole — the per-feature breakdown should feel like it supports and explains the overall impression, not contradict it. If multiple images are provided, synthesize the recurring expression features. If expressions differ across images, use the most impactful one as the reference. Capture expression as a visible facial performance only, not as identity.
-7. For `gaze`: iris_alignment — state explicitly that both irises point in exactly the same direction. sclera_visibility — describe how much white of the eye is visible and on which side, based on the iris position. gaze_body_alignment — confirm that gaze direction, iris direction, and head turn are all consistent; if they are not, specify how they should be corrected. gaze.emotion — describe the emotional temperature of the eyes in specific qualitative terms, not a single word (e.g. "a gaze that feels like the mind is elsewhere, softly detached and dreamlike" / "natural indifference as if unaware of the camera, quiet and unselfconscious"). gaze.quality — describe the sharpness of focus and the tension level of the muscles around the eyes together — how relaxed the periorbital area is, and how sharp or soft the gaze feels. Capture gaze as visible eye performance only, not as identity.
-8. For `pose`, analyze in the following order and fill in each field with specific values rather than vague descriptions: ① camera_facing — identify which surface of the body faces the camera. ② body_axis_to_camera — estimate the angle in degrees between the body axis and the camera plane. ③ depth_direction — describe how the body occupies depth in the frame. ④ camera_distance — estimate the implied physical distance between camera and subject in meters, and describe the intimacy or scale this creates. ⑤ spatial_relationships — describe the positional relationship between the subject and all key objects or environmental elements with distance estimates (e.g. "subject standing approximately 20cm from the window, body parallel to the glass surface"). ⑥ head_orientation — analyze the source image's head orientation as part of the expression and gaze performance. Describe pitch, yaw, and roll separately: pitch means chin lifted, neutral, or lowered; yaw means face turned left, right, or front; roll means head tilted toward either shoulder or kept vertical. If head angle affects the expression, gaze, or mood, preserve it clearly in the filled template. If the exact angle is not important, allow only small natural variation.
-9. For `hair`, treat the hairstyle as a key visual style element. First establish the overall_silhouette, then fill in parting / layers / ends / bangs / ear_visibility / hairline / flyaways / condition / movement in order. Each field must be described with enough specificity that a hairstylist could recreate it — including where layers begin, the thickness and density of bangs, the presence and degree of any curl or wave, and exactly how the hair interacts with the ears and face. Only write "not clearly visible" for fields that genuinely cannot be determined. If multiple images are provided, synthesize the hair characteristics visible from different angles to build the most complete description possible.
-10. For `makeup`, first assess the overall_level, then fill in skin_base / eyes / lips / cheeks in detail. Even if little or no makeup is visible, explicitly state "none" or "natural bare" — do not leave it blank. If the image is illustration or anime-style, translate the makeup into what would look natural in a real photograph. If multiple images are provided, synthesize the consistently visible makeup features.
-11. For `camera`: estimate focal_length based on the perceived perspective compression and distortion in the image. Fill in shot_type based on the actual body range visible in the frame. Analyze subject_position and rule_of_thirds based on the subject's actual placement within the frame.
-12. For `anatomy_and_proportion`, fill in the avoid field with only the anatomical issues that are realistically likely to occur given this specific pose.
-13. [OPTIONAL — INSERT IF REQUIRED] fields: fill in only if genuinely needed for this pose or scene. If not needed, delete the field entirely.
-14. The `negative_prompt` array contains fixed values that must never be removed or modified except identity/face-lock related terms, which should be removed. You may append additional scene-specific or pose-specific negative prompt items at the end of the array, but do not delete or alter the remaining existing entries. The anti-illustration and anti-anime entries (anime, anime style, illustration, digital painting, stylized eyes, oversized eyes, etc.) are permanent and must always remain regardless of the image source.
-15. Delete all `_note` and `_priority` fields from the final output.
-16. Do not attach the original reference image JSON as a separate field. The final output should contain only the filled template.</pre>
+            <pre class="analyze-instr" id="analyze-instr"></pre>
           </div>
           <div class="analyze-bottom">
             <div>
               <div class="ab-title">그리고 이 템플릿을 함께 첨부하세요</div>
-              <div class="ab-sub">
-                이미지 + 위 지시문 + 이 템플릿 → AI가 알아서 채워줍니다.
+              <div class="ab-sub" id="analyze-absub">
+                이미지 + 이 지시문 + 템플릿 → 템플릿 전체를 채워줍니다 (가장 상세).
               </div>
             </div>
             <a
@@ -2464,6 +2498,201 @@ Rules:
         </div>
       </div>
     </div>
+    <script type="text/plain" id="instr-full">
+Analyze the attached image(s) and fill in the JSON template file.
+
+Objective: The filled JSON is a RESHOOT BRIEF. If a photographer, stylist, and model recreated the scene using only this JSON, the result should look like another frame from the same shoot — same place, same person-type, same outfit, same light, same framing. An output that merely shares the mood or color tone is a FAILURE. When in doubt, describe what is literally visible; never substitute a more aesthetic alternative.
+
+Process — follow these three steps in order:
+
+Step 1 — INVENTORY: Before touching the template, list 25-40 raw observations from the image as short factual notes with frame positions (e.g. "red brick wall fills right half, out of focus", "black knit sleeve ends at mid-forearm", "hair ends curl inward at jaw level"). This inventory is working material only — do not include it in the final output.
+
+Step 2 — FILL: Fill in the template using ONLY items from the inventory. Any field you cannot trace back to an observation must be re-checked against the image, not guessed. Do not copy example phrases from the template unless they genuinely match what is visible.
+
+Step 3 — READ-BACK: Re-read the finished JSON alone, as if you had never seen the image, and ask: "would this recreate THIS image, or just a similar vibe?" List the 5 biggest differences a critic would spot between the source image and an image generated from this JSON, then patch those fields before producing the final output. Then run a cross-field consistency check and fix any contradiction: expression.eye_direction vs gaze.direction vs pose.head_orientation yaw / meta.aspect_ratio vs meta.orientation / camera.shot_type vs composition_map.frame_crop / scene.key_objects vs pose.spatial_relationships — contradictory fields cause the generator to ignore both sides. The difference list is working material only — do not include it in the final output.
+
+Rules:
+1. Every descriptive field must contain at least one verifiable concrete anchor — a number, angle, length, position, named color, or specific object name. Adjectives are allowed only when paired with such an anchor. Never fill a field with mood words alone. Exception: the emotional-quality fields (expression.overall_impression, expression.emotion_keywords, gaze.emotion, gaze.quality, meta.mood) may be purely qualitative — rules 10 and 11 govern those.
+2. If a single image is provided, fill in the template based solely on what is visible in that image. If multiple images are provided, prioritize elements that appear consistently across all images; for elements that differ between images (pose, background, outfit, etc.), commit to the most dominant image's version. Never output alternatives ("A or B") in the final JSON — the final output must describe exactly one coherent scene. If multiple PEOPLE are visible in the image, the template describes only the primary subject; describe any other people briefly as `scene.key_objects` entries (position, distance, focus state), not in the subject sections.
+3. If something is genuinely not visible or not determinable, delete that field from the final output entirely rather than writing "not visible" or "n/a". If an entire section's subject is out of frame (e.g. shoes in a bust shot), delete the whole section. Exception: makeup fields (rule 14) must explicitly state "none" or "natural bare", and accessories must state "none" if absent.
+4. If the image is an illustration or anime-style artwork, translate all descriptions into how the subject would appear in a real photograph — no illustrated or stylized language.
+5. Do not create, fill, preserve, or reference any face-lock, facial identity reference, identity preservation, same-person likeness, or reference-image identity fields. The source image is used only for visible visual description, not for face identity. Do not describe the subject as the same person as any reference image. Do not include `reference_identity`, `face_lock_keywords`, `facial_identity`, identity-preservation instructions, or identity-lock keywords in the final output.
+6. For `meta`: `purpose` is a FIXED value — copy it into the final output verbatim; never modify, shorten, or delete it. It tells the downstream model that this JSON is an image generation instruction, not a prompt to analyze. Create the `title` yourself — a short descriptive title (3-8 words) that captures subject, scene, and mood; do not leave it generic or empty. Set `aspect_ratio` and `orientation` to match the source image's actual frame, rounded to the nearest standard ratio (9:16, 2:3, 3:4, 1:1, 4:3, 3:2, 16:9); if multiple images have different ratios, use the dominant image's ratio, and keep orientation consistent with aspect_ratio.
+7. For `fidelity_anchors`, rank the 5-8 visible elements that make THIS image this image — the things a viewer would list first when describing it. Each anchor must be stated concretely (rule 1 applies). If a generated image missed any anchor, it would read as a different image; choose accordingly. Fill this section LAST, after the rest of the template, so the anchors reflect your complete analysis.
+8. For `composition_map`, describe the frame spatially: where the frame cuts the body and how much headroom exists, what occupies the foreground / midground / background, what occupies each vertical third of the frame, and what touches or is cut by each frame edge. Name actual objects, not vibes — this section exists to stop the generator from inventing its own layout.
+9. For `lighting`, analyze in the following order: ① Identify the light source type (natural / artificial / mixed) and time of day or environment. ② Specify the direction of the light source using clock-position relative to the subject (e.g. coming from 10 o'clock, slightly above). ③ Assess the quality of the light — soft and diffused, or hard and directional. ④ In `skin_lighting_behavior`, describe the color temperature shift on the lit side and shadow side specifically — not just "bright / dark" but how the color temperature actually changes (e.g. "lit side receives a cool blue-white cast from the city glow", "shadow side falls into a deep warm-neutral tone"). ⑤ Describe how light interacts with the hair and clothing. ⑥ Describe the background lighting — whether it is bright or dark relative to the subject, and the degree of brightness contrast between subject and background. If multiple images are provided with different lighting, use the dominant image's lighting; do not beautify or substitute a more desirable atmosphere.
+10. For `expression`, analyze in the following order: ① overall_impression — before breaking down any individual feature, describe the expression as a single felt quality in one or two sentences. This sets the emotional context for everything else. ② emotion_keywords — choose 3-5 single words that carry visual and emotional weight and that a generative model can anchor to (e.g. "serene, still, inward, unguarded"). ③ eyebrows — position, arch shape, tension level, distance between brows. ④ eyelids — degree of openness, heaviness, tension. ⑤ eye_direction — the actual direction the irises are pointing. ⑥ mouth_detail — whether the lips are closed or parted, approximate gap in mm if parted, direction of mouth corners, muscle tension around the mouth. ⑦ jaw — tension level, whether the teeth are touching or not. ⑧ facial_muscles — overall state of relaxation or tension across the entire face. The overall_impression and emotion_keywords must always come first and must read as a coherent emotional whole — the per-feature breakdown should feel like it supports and explains the overall impression, not contradict it. If multiple images are provided, synthesize the recurring expression features. If expressions differ across images, use the most impactful one as the reference. Capture expression as a visible facial performance only, not as identity.
+11. For `gaze`: iris_alignment — state explicitly that both irises point in exactly the same direction. sclera_visibility — describe how much white of the eye is visible and on which side, based on the iris position. gaze_body_alignment — confirm that gaze direction, iris direction, and head turn are all consistent; if they are not, specify how they should be corrected. gaze.emotion — describe the emotional temperature of the eyes in specific qualitative terms, not a single word (e.g. "a gaze that feels like the mind is elsewhere, softly detached and dreamlike" / "natural indifference as if unaware of the camera, quiet and unselfconscious"). gaze.quality — describe the sharpness of focus and the tension level of the muscles around the eyes together — how relaxed the periorbital area is, and how sharp or soft the gaze feels. Capture gaze as visible eye performance only, not as identity.
+12. For `pose`, analyze in the following order and fill in each field with specific values rather than vague descriptions: ① camera_facing — identify which surface of the body faces the camera. ② body_axis_to_camera — estimate the angle in degrees between the body axis and the camera plane. ③ depth_direction — describe how the body occupies depth in the frame. ④ camera_distance — estimate the implied physical distance between camera and subject in meters, and describe the intimacy or scale this creates. ⑤ spatial_relationships — describe the positional relationship between the subject and all key objects or environmental elements with distance estimates (e.g. "subject standing approximately 20cm from the window, body parallel to the glass surface"). ⑥ head_orientation — analyze the source image's head orientation as part of the expression and gaze performance. Describe pitch, yaw, and roll separately: pitch means chin lifted, neutral, or lowered; yaw means face turned left, right, or front; roll means head tilted toward either shoulder or kept vertical. If head angle affects the expression, gaze, or mood, preserve it clearly in the filled template. If the exact angle is not important, allow only small natural variation.
+13. For `hair`, treat the hairstyle as a key visual style element. First establish the overall_silhouette, then fill in parting / layers / ends / bangs / ear_visibility / hairline / flyaways / condition / movement in order. Each field must be described with enough specificity that a hairstylist could recreate it — including where layers begin, the thickness and density of bangs, the presence and degree of any curl or wave, and exactly how the hair interacts with the ears and face. Fields that genuinely cannot be determined should be deleted per rule 3, not filled with guesses. If multiple images are provided, synthesize the hair characteristics visible from different angles to build the most complete description possible.
+14. For `makeup`, first assess the overall_level, then fill in skin_base / eyes / lips / cheeks in detail. Even if little or no makeup is visible, explicitly state "none" or "natural bare" — do not leave it blank. If the image is illustration or anime-style, translate the makeup into what would look natural in a real photograph. If multiple images are provided, synthesize the consistently visible makeup features.
+15. For `camera`: estimate focal_length based on the perceived perspective compression and distortion in the image. Fill in shot_type based on the actual body range visible in the frame. Analyze subject_position and rule_of_thirds based on the subject's actual placement within the frame. These fields must be consistent with `composition_map` — if they disagree, re-check the image and fix both.
+16. For `color_grading`, pay explicit attention to the image's tonal finish in `finish`: whether the darkest tones are lifted and faded (matte look) or deep and clean, how the highlights roll off, whether film grain is visible, and the overall matte / glossy / neutral character. If the source photo has a matte, faded, film-like color tone, it must be captured concretely here and reinforced in `contrast` and `saturation` — do not flatten it into "soft contrast" alone. This finish is part of what makes the image feel like itself; consider including it in `fidelity_anchors` when it is distinctive.
+17. For `scene.key_objects`, create one entry for EVERY object that defines this scene — every object a viewer would mention when describing the image. Each entry needs the actual object name, its position in the frame, its distance from the subject, its specific color, and its focus state. A vague background is the main cause of unfaithful generations.
+18. For `anatomy_and_proportion`, fill in the avoid field with only the anatomical issues that are realistically likely to occur given this specific pose.
+19. [OPTIONAL — INSERT IF REQUIRED] fields: fill in only if genuinely needed for this pose or scene. If not needed, delete the field entirely.
+20. The `negative_prompt` array contains fixed values that must never be removed or modified except identity/face-lock related terms, which should be removed. You may append additional scene-specific or pose-specific negative prompt items at the end of the array, but do not delete or alter the remaining existing entries. The anti-illustration and anti-anime entries (anime, anime style, illustration, digital painting, stylized eyes, oversized eyes, etc.) are permanent and must always remain regardless of the image source.
+21. Delete from the final output: all fields whose names begin with an underscore (`_note`, `_priority`, etc.), all `reference_note` fields, and any field whose value would be "not visible" or "n/a" (per rule 3). These are analyzer-facing instructions — the generation model never sees the source image, so they are noise in the final prompt. `meta.purpose` is NOT one of these — it must remain in the final output verbatim.
+22. Do not attach the original reference image JSON as a separate field. The final output should contain only the filled template.
+    </script>
+    <script type="text/plain" id="instr-normal">
+Analyze the attached image(s) and fill in the JSON template file.
+
+Objective: The filled JSON is a RESHOOT BRIEF. If a photographer, stylist, and model recreated the scene using only this JSON, the result should look like another frame from the same shoot — same place, same person-type, same outfit, same light, same framing. An output that merely shares the mood or color tone is a FAILURE. When in doubt, describe what is literally visible; never substitute a more aesthetic alternative.
+
+Process — follow these three steps in order:
+
+Step 1 — INVENTORY: Before touching the template, list 25-40 raw observations from the image as short factual notes with frame positions (e.g. "red brick wall fills right half, out of focus", "black knit sleeve ends at mid-forearm", "hair ends curl inward at jaw level"). This inventory is working material only — do not include it in the final output.
+
+Step 2 — FILL: Fill in the template using ONLY items from the inventory. Any field you cannot trace back to an observation must be re-checked against the image, not guessed. Do not copy example phrases from the template unless they genuinely match what is visible.
+
+Step 3 — READ-BACK: Re-read the finished JSON alone, as if you had never seen the image, and ask: "would this recreate THIS image, or just a similar vibe?" List the 5 biggest differences a critic would spot between the source image and an image generated from this JSON, then patch those fields before producing the final output. Then run a cross-field consistency check and fix any contradiction: expression.eye_direction vs gaze.direction vs pose.head_orientation yaw / meta.aspect_ratio vs meta.orientation / camera.shot_type vs composition_map.frame_crop / scene.key_objects vs pose.spatial_relationships — contradictory fields cause the generator to ignore both sides. The difference list is working material only — do not include it in the final output.
+
+Step 4 — COMPRESS: The fully filled template from Steps 2-3 is your analysis WORKSHEET, not the deliverable. Image generators truncate or dilute prompts that are too long, so compress the worksheet into the compact output format defined at the end of this document. Compression rules: (a) keep every fidelity_anchor; (b) collapse each section into 1-3 dense sentences that preserve every concrete anchor — numbers, angles, distances, positions, named colors, object names — while dropping field labels, filler words, and repeated ideas; (c) if two worksheet fields say the same thing, say it once; (d) "avoid" items survive only by being merged into negative_prompt, or are dropped if already covered there; (e) target 300-450 words of descriptive text in total, never exceed 550. After compressing, verify that every fidelity_anchor is still explicitly present in the compact output — compression must lose words, not information.
+
+Rules:
+1. Every descriptive field must contain at least one verifiable concrete anchor — a number, angle, length, position, named color, or specific object name. Adjectives are allowed only when paired with such an anchor. Never fill a field with mood words alone. Exception: the emotional-quality fields (expression.overall_impression, expression.emotion_keywords, gaze.emotion, gaze.quality, meta.mood) may be purely qualitative — rules 10 and 11 govern those.
+2. If a single image is provided, fill in the template based solely on what is visible in that image. If multiple images are provided, prioritize elements that appear consistently across all images; for elements that differ between images (pose, background, outfit, etc.), commit to the most dominant image's version. Never output alternatives ("A or B") in the final JSON — the final output must describe exactly one coherent scene. If multiple PEOPLE are visible in the image, the template describes only the primary subject; describe any other people briefly as `scene.key_objects` entries (position, distance, focus state), not in the subject sections.
+3. If something is genuinely not visible or not determinable, delete that field from the final output entirely rather than writing "not visible" or "n/a". If an entire section's subject is out of frame (e.g. shoes in a bust shot), delete the whole section. Exception: makeup fields (rule 14) must explicitly state "none" or "natural bare", and accessories must state "none" if absent.
+4. If the image is an illustration or anime-style artwork, translate all descriptions into how the subject would appear in a real photograph — no illustrated or stylized language.
+5. Do not create, fill, preserve, or reference any face-lock, facial identity reference, identity preservation, same-person likeness, or reference-image identity fields. The source image is used only for visible visual description, not for face identity. Do not describe the subject as the same person as any reference image. Do not include `reference_identity`, `face_lock_keywords`, `facial_identity`, identity-preservation instructions, or identity-lock keywords in the final output.
+6. For `meta`: `purpose` is a FIXED value — copy it into the final output verbatim; never modify, shorten, or delete it. It tells the downstream model that this JSON is an image generation instruction, not a prompt to analyze. Create the `title` yourself — a short descriptive title (3-8 words) that captures subject, scene, and mood; do not leave it generic or empty. Set `aspect_ratio` and `orientation` to match the source image's actual frame, rounded to the nearest standard ratio (9:16, 2:3, 3:4, 1:1, 4:3, 3:2, 16:9); if multiple images have different ratios, use the dominant image's ratio, and keep orientation consistent with aspect_ratio.
+7. For `fidelity_anchors`, rank the 5-8 visible elements that make THIS image this image — the things a viewer would list first when describing it. Each anchor must be stated concretely (rule 1 applies). If a generated image missed any anchor, it would read as a different image; choose accordingly. Fill this section LAST, after the rest of the template, so the anchors reflect your complete analysis.
+8. For `composition_map`, describe the frame spatially: where the frame cuts the body and how much headroom exists, what occupies the foreground / midground / background, what occupies each vertical third of the frame, and what touches or is cut by each frame edge. Name actual objects, not vibes — this section exists to stop the generator from inventing its own layout.
+9. For `lighting`, analyze in the following order: ① Identify the light source type (natural / artificial / mixed) and time of day or environment. ② Specify the direction of the light source using clock-position relative to the subject (e.g. coming from 10 o'clock, slightly above). ③ Assess the quality of the light — soft and diffused, or hard and directional. ④ In `skin_lighting_behavior`, describe the color temperature shift on the lit side and shadow side specifically — not just "bright / dark" but how the color temperature actually changes (e.g. "lit side receives a cool blue-white cast from the city glow", "shadow side falls into a deep warm-neutral tone"). ⑤ Describe how light interacts with the hair and clothing. ⑥ Describe the background lighting — whether it is bright or dark relative to the subject, and the degree of brightness contrast between subject and background. If multiple images are provided with different lighting, use the dominant image's lighting; do not beautify or substitute a more desirable atmosphere.
+10. For `expression`, analyze in the following order: ① overall_impression — before breaking down any individual feature, describe the expression as a single felt quality in one or two sentences. This sets the emotional context for everything else. ② emotion_keywords — choose 3-5 single words that carry visual and emotional weight and that a generative model can anchor to (e.g. "serene, still, inward, unguarded"). ③ eyebrows — position, arch shape, tension level, distance between brows. ④ eyelids — degree of openness, heaviness, tension. ⑤ eye_direction — the actual direction the irises are pointing. ⑥ mouth_detail — whether the lips are closed or parted, approximate gap in mm if parted, direction of mouth corners, muscle tension around the mouth. ⑦ jaw — tension level, whether the teeth are touching or not. ⑧ facial_muscles — overall state of relaxation or tension across the entire face. The overall_impression and emotion_keywords must always come first and must read as a coherent emotional whole — the per-feature breakdown should feel like it supports and explains the overall impression, not contradict it. If multiple images are provided, synthesize the recurring expression features. If expressions differ across images, use the most impactful one as the reference. Capture expression as a visible facial performance only, not as identity.
+11. For `gaze`: iris_alignment — state explicitly that both irises point in exactly the same direction. sclera_visibility — describe how much white of the eye is visible and on which side, based on the iris position. gaze_body_alignment — confirm that gaze direction, iris direction, and head turn are all consistent; if they are not, specify how they should be corrected. gaze.emotion — describe the emotional temperature of the eyes in specific qualitative terms, not a single word (e.g. "a gaze that feels like the mind is elsewhere, softly detached and dreamlike" / "natural indifference as if unaware of the camera, quiet and unselfconscious"). gaze.quality — describe the sharpness of focus and the tension level of the muscles around the eyes together — how relaxed the periorbital area is, and how sharp or soft the gaze feels. Capture gaze as visible eye performance only, not as identity.
+12. For `pose`, analyze in the following order and fill in each field with specific values rather than vague descriptions: ① camera_facing — identify which surface of the body faces the camera. ② body_axis_to_camera — estimate the angle in degrees between the body axis and the camera plane. ③ depth_direction — describe how the body occupies depth in the frame. ④ camera_distance — estimate the implied physical distance between camera and subject in meters, and describe the intimacy or scale this creates. ⑤ spatial_relationships — describe the positional relationship between the subject and all key objects or environmental elements with distance estimates (e.g. "subject standing approximately 20cm from the window, body parallel to the glass surface"). ⑥ head_orientation — analyze the source image's head orientation as part of the expression and gaze performance. Describe pitch, yaw, and roll separately: pitch means chin lifted, neutral, or lowered; yaw means face turned left, right, or front; roll means head tilted toward either shoulder or kept vertical. If head angle affects the expression, gaze, or mood, preserve it clearly in the filled template. If the exact angle is not important, allow only small natural variation.
+13. For `hair`, treat the hairstyle as a key visual style element. First establish the overall_silhouette, then fill in parting / layers / ends / bangs / ear_visibility / hairline / flyaways / condition / movement in order. Each field must be described with enough specificity that a hairstylist could recreate it — including where layers begin, the thickness and density of bangs, the presence and degree of any curl or wave, and exactly how the hair interacts with the ears and face. Fields that genuinely cannot be determined should be deleted per rule 3, not filled with guesses. If multiple images are provided, synthesize the hair characteristics visible from different angles to build the most complete description possible.
+14. For `makeup`, first assess the overall_level, then fill in skin_base / eyes / lips / cheeks in detail. Even if little or no makeup is visible, explicitly state "none" or "natural bare" — do not leave it blank. If the image is illustration or anime-style, translate the makeup into what would look natural in a real photograph. If multiple images are provided, synthesize the consistently visible makeup features.
+15. For `camera`: estimate focal_length based on the perceived perspective compression and distortion in the image. Fill in shot_type based on the actual body range visible in the frame. Analyze subject_position and rule_of_thirds based on the subject's actual placement within the frame. These fields must be consistent with `composition_map` — if they disagree, re-check the image and fix both.
+16. For `color_grading`, pay explicit attention to the image's tonal finish in `finish`: whether the darkest tones are lifted and faded (matte look) or deep and clean, how the highlights roll off, whether film grain is visible, and the overall matte / glossy / neutral character. If the source photo has a matte, faded, film-like color tone, it must be captured concretely here and reinforced in `contrast` and `saturation` — do not flatten it into "soft contrast" alone. This finish is part of what makes the image feel like itself; consider including it in `fidelity_anchors` when it is distinctive.
+17. For `scene.key_objects`, create one entry for EVERY object that defines this scene — every object a viewer would mention when describing the image. Each entry needs the actual object name, its position in the frame, its distance from the subject, its specific color, and its focus state. A vague background is the main cause of unfaithful generations.
+18. For `anatomy_and_proportion`, fill in the avoid field with only the anatomical issues that are realistically likely to occur given this specific pose.
+19. [OPTIONAL — INSERT IF REQUIRED] fields: fill in only if genuinely needed for this pose or scene. If not needed, delete the field entirely.
+20. The `negative_prompt` values in the worksheet are fixed — never remove or modify them there, except identity/face-lock related terms, which should be removed. You may append scene-specific or pose-specific items at the end. In the COMPACT FINAL OUTPUT (Step 4), use the condensed negative_prompt from the output format below: redundant entries are merged into one representative phrase per concept, but every concept group must survive — anti-anime/illustration/render, eye stylization, skin realism, anatomy and hands, head/neck proportion, expression/makeup/lighting restraint, watermark/text. The anti-anime and anti-illustration concepts are permanent regardless of the image source.
+21. Never carry into the compact final output: template fields whose names begin with an underscore (`_note`, `_priority`, etc.), `reference_note` fields, or anything that is "not visible" / "n/a" (per rule 3). These are analyzer-facing instructions — the generation model never sees the source image, so they are noise in the final prompt. `meta.purpose` is NOT one of these — it must appear in the final output verbatim.
+22. The final output is ONLY the compact JSON defined below — do not output the filled worksheet template, the inventory, the difference list, or the original reference image JSON. One JSON object, nothing before or after it.
+
+Final output format:
+
+Output a single compact JSON object in this shape. Each descriptive value is dense prose packed with the concrete anchors from your worksheet — no field labels inside the text, no hedging, no repetition. Target 300-450 words of descriptive text total (hard cap 550).
+
+{
+  "purpose": "<copy meta.purpose from the template VERBATIM>",
+  "title": "<your 3-8 word title>",
+  "aspect_ratio": "<e.g. 9:16>",
+  "orientation": "<portrait / landscape / square>",
+  "style_and_mood": "<overall style + genre + 3-5 mood words, one line>",
+  "fidelity_anchors": ["<all 5-8 ranked anchors, verbatim or tightened>"],
+  "subject": "<gender, age range, ethnicity, build, skin as it appears under this scene's light — 1-2 sentences>",
+  "expression_and_gaze": "<overall impression + emotion keywords + the most distinctive feature details (eyelid state, mouth gap in mm, iris direction, sclera balance, head pitch/yaw/roll) — 2-3 sentences>",
+  "hair": "<silhouette, length, color, parting, bangs, ends, ear visibility, movement — 2-3 sentences>",
+  "makeup": "<overall level + notable details, or 'none / natural bare' — 1 sentence>",
+  "wardrobe": "<top with type/color/fit/fabric/sleeves, bottom, legwear/shoes/accessories only if visible — 1-3 sentences>",
+  "scene": "<location + every key object with its position, distance from subject, color, and focus state — 2-3 sentences>",
+  "composition": "<frame crop and headroom, subject position in frame, what occupies each third, edge contacts, negative space — 2 sentences>",
+  "pose": "<body angle to camera in degrees, camera distance in meters, legs/arms/hands, head orientation — 2-3 sentences>",
+  "lighting": "<source type + clock-position direction + quality, lit-side and shadow-side skin color behavior, subject-background brightness contrast — 2-3 sentences>",
+  "camera": "<focal length, shot type, angle, depth of field — 1 sentence>",
+  "color_grading": "<palette, contrast, saturation, finish: blacks / highlight rolloff / grain — 1-2 sentences>",
+  "quality": ["photorealistic", "high_detail", "realistic_skin_texture", "natural_hair_detail", "realistic_fabric_texture", "realistic_anatomy"],
+  "negative_prompt": [
+    "anime, cartoon, illustration, digital painting, 2D or cel-shaded style, 3D render, CGI, any non-photorealistic rendering",
+    "stylized or oversized eyes, eye highlight orbs",
+    "plastic over-smoothed skin, painted skin texture, flat even skin lighting, skin unaffected by light color temperature, overexposed skin",
+    "bad anatomy, extra or missing fingers, deformed hands, distorted arms or legs",
+    "disproportionate or oversized head, elongated or distorted neck, unnatural head rotation",
+    "unrealistic proportions, foreshortening artifacts",
+    "exaggerated or overly cute expression, heavy makeup, glamour styling, studio lighting",
+    "cluttered background, watermark, logo, text",
+    "<APPEND SCENE-SPECIFIC OR POSE-SPECIFIC NEGATIVES IF NEEDED>"
+  ]
+}
+    </script>
+    <script type="text/plain" id="instr-reinterpret">
+Analyze the attached image(s) using the JSON template file as an analysis worksheet, then REINTERPRET the image into a new scene.
+
+REINTERPRETATION LEVEL: medium
+  - light  = change the location/background only. Wardrobe, hair, composition, and time of day stay close to the source.
+  - medium = change the location, wardrobe details, composition, and time of day. Keep the pose, the expression/gaze feeling, the hair impression, the light character, the color finish, and the mood.
+  - free   = keep only the pose skeleton, the emotional register, and the color mood. Everything else — setting, wardrobe, hair styling, shot type, aspect ratio — may be reinvented.
+(Edit the LEVEL line above before use. If left unchanged, apply "medium".)
+
+Objective: The output is a VARIATION BRIEF, not a reshoot brief — same soul, new body. Placed side by side with the source, the generated image should read as another work from the same series by the same artist: same emotional temperature, same pose language, same light character, same color world — but clearly NOT a re-photograph of the same scene. Two failure modes, equally bad: (1) copying the source scene — too close; (2) losing the feeling that made the source worth reinterpreting — too far. Reinterpretation is freedom of SETTING, never freedom of REGISTER: a quiet emotional portrait must remain a quiet emotional portrait.
+
+Process — follow these five steps in order:
+
+Step 1 — INVENTORY: List 25-40 raw observations from the source image as short factual notes with frame positions (e.g. "red brick wall fills right half, out of focus", "black knit sleeve ends at mid-forearm", "hair ends curl inward at jaw level"). Working material only — do not include it in the final output.
+
+Step 2 — FILL: Fill in the worksheet template using ONLY items from the inventory, exactly as if you were going to replicate the image. You cannot reinterpret well what you have not understood precisely — this step is where you learn WHERE the feeling of the image actually comes from. Do not copy example phrases from the template unless they genuinely match what is visible.
+
+Step 3 — DISTILL: From the completed worksheet, write the PRESERVE list — the 5-8 elements that carry the feeling of the source. Always consider: the pose skeleton (body angle, head pitch/yaw/roll, hand gesture), the emotional temperature of the expression and gaze, the character of the light (softness, color temperature, contrast ratio — the direction may adapt to the new scene), the color grading and finish (including matte/faded rendering if present), and the mood register. Each preserve item must be stated concretely enough to survive into a new scene.
+
+Step 4 — REDESIGN: Invent ONE new concrete scene according to the REINTERPRETATION LEVEL. The new scene must be a place and moment where the preserved light and pose would occur NATURALLY — derive the setting from the mood, do not bolt the mood onto a random setting (e.g. a soft inward golden-hour pose belongs on a quiet balcony at dusk, not in a busy shopping street at noon). Then specify the new scene with FULL rigor: actual objects with positions, distances from the subject, specific named colors, and focus states; new wardrobe with type, color, fit, fabric; new composition with frame crop, thirds, edge contacts. "Freely chosen, precisely specified" — a vaguely described new scene lets the generator invent its own, which destroys the variation. Commit to exactly one scene; never output alternatives.
+
+Step 5 — COMPRESS: Compress into the compact output format defined at the end of this document. Keep every PRESERVE item and every concrete anchor of the new scene — numbers, angles, distances, positions, named colors, object names — while dropping field labels, filler, and repetition. Target 300-450 words of descriptive text in total, never exceed 550. After compressing, verify every PRESERVE item is still explicitly present.
+
+Rules:
+1. Every descriptive field must contain at least one verifiable concrete anchor — a number, angle, length, position, named color, or specific object name. Adjectives are allowed only when paired with such an anchor. Exception: the emotional-quality fields (expression overall impression, emotion keywords, gaze emotion and quality, mood) may be purely qualitative.
+2. If multiple images are provided, distill the preserved elements from what appears consistently across them; commit to one coherent source reading. If multiple PEOPLE are visible, reinterpret only the primary subject. Never output alternatives ("A or B") anywhere in the final JSON.
+3. Fields that are genuinely not visible in the source are deleted from the worksheet, not guessed. Exception: makeup must state "none" or "natural bare", and accessories must state "none" if absent.
+4. If the source is an illustration or anime-style artwork, translate everything into how it would appear in a real photograph — no illustrated or stylized language.
+5. Do not create, fill, preserve, or reference any face-lock, facial identity reference, identity preservation, same-person likeness, or reference-image identity fields. The source is used only for visible visual description and reinterpretation, not for face identity. Do not include `reference_identity`, `face_lock_keywords`, `facial_identity`, or identity-lock keywords in the final output.
+6. For meta: `purpose` is a FIXED value — copy it from the template into the final output verbatim; never modify or delete it. Create the `title` yourself — 3-8 words evoking the NEW scene and the shared mood. At light/medium level, keep the source image's aspect_ratio and orientation (rounded to the nearest standard ratio: 9:16, 2:3, 3:4, 1:1, 4:3, 3:2, 16:9); at free level you may choose the ratio that best serves the new composition.
+7. PRESERVE items are non-negotiable — they play the role fidelity_anchors play in replication. If the generated image missed any preserve item, it would no longer read as a variation of the source. Fill this list from the completed worksheet, not from memory of the image.
+8. REINVENT items must each name what was changed and what it became, concretely (e.g. "location: outdoor stone steps → window seat of a quiet cafe at dusk, approximately 50cm from rain-streaked glass"). Everything not in PRESERVE and not reinvented should default to staying close to the source.
+9. The pose is preserved at every level: keep the body-axis angle to camera (in degrees), the head pitch/yaw/roll, the limb arrangement, and the hand gesture within small natural variation. Adapt only the surfaces the pose interacts with (what the subject sits on, leans against, or holds) to fit the new scene, keeping contact relationships equivalent.
+10. The light CHARACTER is preserved: softness or hardness, color temperature, subject-background brightness contrast, and how skin responds on the lit and shadow sides (describe the color temperature shift on each side, not just bright/dark). The DIRECTION and physical source may change to whatever the new scene naturally provides — state the new source and its clock-position relative to the subject.
+11. The expression and gaze are preserved as a felt quality: state the overall impression in one or two sentences, 3-5 emotion keywords, and the key mechanics that produce it — eyelid openness, mouth gap in mm, iris direction, sclera balance, and head orientation. Both irises must point in exactly the same direction, and gaze direction, iris direction, and head turn must stay consistent. What the gaze rests ON may change with the new scene. Capture expression and gaze as visible performance only, not as identity.
+12. Hair: at light/medium level, preserve the hair impression — silhouette, length, color, parting, bangs — described specifically enough for a hairstylist; movement may adapt to the new scene (wind, stillness). At free level, hair may be restyled to serve the new scene while staying plausible for the same person-type.
+13. Makeup: preserve the overall level and character from the source (state "none" or "natural bare" explicitly if so).
+14. New wardrobe (medium/free): stay within the same style register as the source — reinterpret the outfit as something the same character would wear in the new setting. Specify type, specific named color, fit, fabric, sleeves, and length for each visible garment; delete sections for garments out of frame.
+15. New scene: create one entry per key object — every object a viewer would mention — with its position in the frame, distance from the subject, specific color, and focus state. A vague new scene is the main failure mode of reinterpretation.
+16. New composition (medium/free): define the frame crop and headroom, subject position, what occupies each vertical third, edge contacts, and negative space. Keep camera fields (focal length, shot type, angle, depth of field) consistent with this composition. At light level, keep the source composition.
+17. Color grading is preserved: palette family, contrast, saturation, and finish — whether blacks are lifted and matte or deep and clean, how highlights roll off, visible grain. If the source has a matte film-like tone, it must survive into the variation and appear in the PRESERVE list.
+18. Anatomy: note only the anatomical risks realistically likely for this pose (head size, neck, shoulder line, limb proportions as relevant).
+19. The final compact output uses the condensed negative_prompt in the format below; every concept group must survive — anti-anime/illustration/render, eye stylization, skin realism, anatomy and hands, head/neck proportion, expression/makeup/lighting restraint, watermark/text. You may append scene-specific negatives. The anti-anime and anti-illustration concepts are permanent regardless of the image source.
+20. Never carry into the final output: worksheet fields whose names begin with an underscore, `reference_note` fields, anything "not visible"/"n/a", the inventory, or the preserve/redesign working notes. `meta.purpose` is NOT one of these — it must appear verbatim.
+21. The final output is ONLY the compact JSON defined below — one JSON object, nothing before or after it. Do not attach the worksheet or the source analysis.
+
+Final output format:
+
+Output a single compact JSON object in this shape. Each descriptive value is dense prose packed with concrete anchors — no field labels inside the text, no hedging, no repetition. Target 300-450 words of descriptive text total (hard cap 550).
+
+{
+  "purpose": "<copy meta.purpose from the template VERBATIM>",
+  "title": "<3-8 word title evoking the NEW scene and shared mood>",
+  "aspect_ratio": "<e.g. 9:16>",
+  "orientation": "<portrait / landscape / square>",
+  "style_and_mood": "<overall style + genre + 3-5 mood words — must match the source's register>",
+  "preserved_from_source": ["<the 5-8 PRESERVE items: pose skeleton, expression/gaze temperature, light character, color finish, mood register — stated concretely>"],
+  "reinvented": ["<one line per changed element: 'location: X → Y' / 'wardrobe: X → Y' / 'time of day: X → Y' — concrete on both sides>"],
+  "subject": "<gender, age range, ethnicity, build, skin as it appears under the NEW scene's light — 1-2 sentences>",
+  "expression_and_gaze": "<preserved overall impression + emotion keywords + eyelid state, mouth gap in mm, iris direction, head pitch/yaw/roll; what the gaze rests on in the new scene — 2-3 sentences>",
+  "hair": "<silhouette, length, color, parting, bangs, ends, movement as adapted to the new scene — 2-3 sentences>",
+  "makeup": "<preserved level, or 'none / natural bare' — 1 sentence>",
+  "wardrobe": "<the NEW outfit: type, specific named color, fit, fabric, sleeves, length; only visible garments — 1-3 sentences>",
+  "scene": "<the NEW location + every key object with position, distance from subject, specific color, focus state — 2-3 sentences>",
+  "composition": "<frame crop and headroom, subject position, thirds, edge contacts, negative space — 2 sentences>",
+  "pose": "<preserved pose: body angle to camera in degrees, camera distance in meters, legs/arms/hands, head orientation; contact surfaces adapted to the new scene — 2-3 sentences>",
+  "lighting": "<the NEW physical source + clock-position direction, with the PRESERVED character: softness, color temperature, lit/shadow skin behavior, subject-background contrast — 2-3 sentences>",
+  "camera": "<focal length, shot type, angle, depth of field — 1 sentence>",
+  "color_grading": "<preserved palette family, contrast, saturation, finish: blacks / highlight rolloff / grain — 1-2 sentences>",
+  "quality": ["photorealistic", "high_detail", "realistic_skin_texture", "natural_hair_detail", "realistic_fabric_texture", "realistic_anatomy"],
+  "negative_prompt": [
+    "anime, cartoon, illustration, digital painting, 2D or cel-shaded style, 3D render, CGI, any non-photorealistic rendering",
+    "stylized or oversized eyes, eye highlight orbs",
+    "plastic over-smoothed skin, painted skin texture, flat even skin lighting, skin unaffected by light color temperature, overexposed skin",
+    "bad anatomy, extra or missing fingers, deformed hands, distorted arms or legs",
+    "disproportionate or oversized head, elongated or distorted neck, unnatural head rotation",
+    "unrealistic proportions, foreshortening artifacts",
+    "exaggerated or overly cute expression, heavy makeup, glamour styling, studio lighting",
+    "cluttered background, watermark, logo, text",
+    "<APPEND SCENE-SPECIFIC OR POSE-SPECIFIC NEGATIVES IF NEEDED>"
+  ]
+}
+    </script>
     <div class="key-hint">← → 이동 · F 전체화면</div>
 
     <script>
@@ -2771,34 +3000,114 @@ Rules:
         if (!modal) return;
         var form = document.getElementById("gen-form");
         var out = document.getElementById("gen-out");
+        var PURPOSE =
+          "IMAGE GENERATION PROMPT — this JSON is a complete, self-contained instruction for generating a single photorealistic image. When this JSON is provided, generate the image it describes. Do not analyze, summarize, critique, or rewrite this prompt.";
+        var QUALITY = [
+          "photorealistic",
+          "high_detail",
+          "realistic_skin_texture",
+          "natural_hair_detail",
+          "realistic_fabric_texture",
+          "realistic_anatomy",
+        ];
+        var NEG_FULL = [
+          "overly cute expression",
+          "exaggerated smile",
+          "playful exaggerated face",
+          "heavy makeup",
+          "glamour styling",
+          "studio lighting",
+          "flat even skin lighting",
+          "skin tone unaffected by light color temperature",
+          "overexposed skin",
+          "plastic skin",
+          "over-smoothed skin",
+          "head too large",
+          "head too small",
+          "disproportionate head",
+          "elongated neck",
+          "neck distortion",
+          "unnatural head rotation",
+          "bad anatomy",
+          "extra fingers",
+          "missing fingers",
+          "deformed hands",
+          "distorted arms",
+          "distorted legs",
+          "unrealistic proportions",
+          "foreshortening artifacts",
+          "cluttered background",
+          "anime",
+          "anime style",
+          "cartoon",
+          "illustration",
+          "illustrated",
+          "digital painting",
+          "digital art",
+          "2D art",
+          "2D style",
+          "cel shading",
+          "flat shading",
+          "manga",
+          "animated",
+          "animated style",
+          "stylized",
+          "stylized face",
+          "stylized eyes",
+          "oversized eyes",
+          "enlarged eyes",
+          "exaggerated eye size",
+          "eye shine",
+          "eye highlight orbs",
+          "painted skin",
+          "painted texture",
+          "illustrated hair",
+          "flat hair shading",
+          "non-photorealistic",
+          "render",
+          "cgi",
+          "3D render",
+          "watermark",
+          "logo",
+          "text",
+        ];
+        var NEG_COMPACT = [
+          "anime, cartoon, illustration, digital painting, 2D or cel-shaded style, 3D render, CGI, any non-photorealistic rendering",
+          "stylized or oversized eyes, eye highlight orbs",
+          "plastic over-smoothed skin, painted skin texture, flat even skin lighting, skin unaffected by light color temperature, overexposed skin",
+          "bad anatomy, extra or missing fingers, deformed hands, distorted arms or legs",
+          "disproportionate or oversized head, elongated or distorted neck, unnatural head rotation",
+          "unrealistic proportions, foreshortening artifacts",
+          "exaggerated or overly cute expression, heavy makeup, glamour styling, studio lighting",
+          "cluttered background, watermark, logo, text",
+        ];
+        var AR = ["9:16", "2:3", "3:4", "1:1", "4:3", "3:2", "16:9"];
         var T = {
           meta: {
+            purpose: { t: "f", v: PURPOSE },
             title: { t: "s", ph: "제목 (예: Quiet courtyard portrait)" },
-            aspect_ratio: {
-              t: "s",
-              opts: ["9:16", "3:4", "1:1", "4:3", "16:9"],
-              v: "9:16",
-            },
+            aspect_ratio: { t: "s", opts: AR, v: "9:16" },
             orientation: {
               t: "s",
               ph: "portrait / landscape / square",
               v: "portrait",
             },
-            style: {
-              t: "s",
-              ph: "전체 비주얼 스타일 (예: 실사 야외 라이프스타일)",
-            },
+            style: { t: "s", ph: "전체 비주얼 스타일 (예: 실사 야외 라이프스타일)" },
             genre: { t: "s", ph: "장르·바이브 (예: 조용한 감성 프레피)" },
-            mood: {
-              t: "a",
-              ph: "무드 (한 줄에 하나) 예: calm / clean / quiet",
-            },
+            mood: { t: "a", ph: "무드 (한 줄에 하나) 예: calm / clean / quiet" },
+          },
+          fidelity_anchors: {
+            t: "a",
+            ph: "이 이미지의 핵심 요소 5~8개 (한 줄에 하나, 중요도순)",
           },
           subject: {
             gender: { t: "s", ph: "예: adult woman" },
             age: { t: "s", ph: "예: 20-28" },
             ethnicity: { t: "s", ph: "예: East Asian" },
-            appearance: { skin: { t: "s", ph: "조명 아래 피부 묘사" } },
+            appearance: {
+              build: { t: "s", ph: "체형 (보이는 것만)" },
+              skin: { t: "s", ph: "조명 아래 피부 묘사" },
+            },
             expression: {
               overall_impression: { t: "s", ph: "표정 전체 인상 한 줄" },
               emotion_keywords: { t: "s", ph: "감정 키워드 3~5개" },
@@ -2866,7 +3175,10 @@ Rules:
           scene: {
             location: { t: "s", ph: "장소" },
             environment: { t: "a", ph: "환경 요소 (한 줄에 하나)" },
-            details: { t: "a", ph: "장면 디테일 (한 줄에 하나)" },
+            key_objects: {
+              t: "a",
+              ph: "핵심 사물 (한 줄에 하나: 사물 · 위치 · 거리 · 색 · 초점)",
+            },
             background_rendering: {
               complexity: { t: "s", ph: "배경 복잡도" },
               focus: { t: "s", ph: "초점 의도" },
@@ -2877,11 +3189,21 @@ Rules:
             top: {
               type: { t: "s", ph: "상의 종류" },
               color: { t: "s", ph: "색" },
+              fit: { t: "s", ph: "핏" },
+              fabric: { t: "s", ph: "원단" },
+              neckline: { t: "s", ph: "넥라인" },
+              sleeve_length: { t: "s", ph: "소매" },
+              length_and_tuck: { t: "s", ph: "기장·턱인" },
+              layering: { t: "s", ph: "레이어링" },
               style: { t: "s", ph: "스타일" },
               details: { t: "a", ph: "디테일 (한 줄에 하나)" },
             },
             bottom: {
               type: { t: "s", ph: "하의 종류" },
+              color: { t: "s", ph: "색" },
+              fit: { t: "s", ph: "핏" },
+              fabric: { t: "s", ph: "원단" },
+              length: { t: "s", ph: "기장" },
               style: { t: "s", ph: "스타일" },
             },
             legwear: {
@@ -2896,8 +3218,7 @@ Rules:
               design: { t: "s", ph: "디자인" },
             },
             accessories: {
-              item: { t: "s", ph: "액세서리" },
-              design: { t: "s", ph: "디자인" },
+              items: { t: "a", ph: "액세서리 (한 줄에 하나, 없으면 none)" },
               avoid: { t: "a", ph: "피할 것" },
             },
             overall_style: { t: "a", ph: "전체 스타일 방향 (한 줄에 하나)" },
@@ -2943,6 +3264,16 @@ Rules:
             effects: { t: "a", ph: "조명 효과 (한 줄에 하나)" },
             avoid: { t: "a", ph: "피할 조명" },
           },
+          composition_map: {
+            frame_crop: { t: "s", ph: "프레임 크롭·헤드룸" },
+            foreground: { t: "s", ph: "전경" },
+            midground: { t: "s", ph: "중경 (인물 위치)" },
+            background: { t: "s", ph: "배경 (실제 사물)" },
+            left_third: { t: "s", ph: "좌 1/3" },
+            center_third: { t: "s", ph: "중앙 1/3" },
+            right_third: { t: "s", ph: "우 1/3" },
+            edge_contacts: { t: "s", ph: "가장자리 접점" },
+          },
           camera: {
             composition: { t: "s", ph: "구도" },
             angle: { t: "s", ph: "앵글" },
@@ -2961,6 +3292,12 @@ Rules:
             palette: { t: "a", ph: "팔레트 색 (한 줄에 하나)" },
             contrast: { t: "s", ph: "대비" },
             saturation: { t: "s", ph: "채도" },
+            finish: {
+              blacks: { t: "s", ph: "블랙 (리프트/딥)" },
+              highlights: { t: "s", ph: "하이라이트 롤오프" },
+              grain: { t: "s", ph: "그레인" },
+              overall_finish: { t: "s", ph: "전체 마감 (매트/글로시)" },
+            },
             processing: { t: "s", ph: "프로세싱 느낌" },
           },
           anatomy_and_proportion: {
@@ -2982,81 +3319,54 @@ Rules:
               ],
             },
           },
-          quality: {
-            t: "a",
-            ph: "품질 항목 (한 줄에 하나, 자유롭게 추가)",
-            v: [
-              "photorealistic",
-              "high_detail",
-              "realistic_skin_texture",
-              "natural_hair_detail",
-              "realistic_fabric_texture",
-              "realistic_anatomy",
-            ],
-          },
-          negative_prompt: {
-            t: "a",
-            ph: "제외 항목 (한 줄에 하나)",
-            v: [
-              "overly cute expression",
-              "exaggerated smile",
-              "heavy makeup",
-              "glamour styling",
-              "studio lighting",
-              "flat even skin lighting",
-              "overexposed skin",
-              "plastic skin",
-              "over-smoothed skin",
-              "head too large",
-              "disproportionate head",
-              "elongated neck",
-              "bad anatomy",
-              "extra fingers",
-              "missing fingers",
-              "deformed hands",
-              "distorted arms",
-              "unrealistic proportions",
-              "foreshortening artifacts",
-              "cluttered background",
-              "anime",
-              "cartoon",
-              "illustration",
-              "digital painting",
-              "2D art",
-              "cel shading",
-              "manga",
-              "stylized",
-              "stylized eyes",
-              "oversized eyes",
-              "painted skin",
-              "illustrated hair",
-              "non-photorealistic",
-              "3D render",
-              "watermark",
-              "logo",
-              "text",
-            ],
-          },
+          quality: { t: "a", ph: "품질 항목 (한 줄에 하나)", v: QUALITY },
+          negative_prompt: { t: "a", ph: "제외 항목 (한 줄에 하나)", v: NEG_FULL },
         };
         var E = {
-          meta: T.meta,
+          purpose: { t: "f", v: PURPOSE },
+          title: { t: "s", ph: "제목 (3~8단어)" },
+          aspect_ratio: { t: "s", opts: AR, v: "9:16" },
+          orientation: {
+            t: "s",
+            ph: "portrait / landscape / square",
+            v: "portrait",
+          },
+          style_and_mood: { t: "m", ph: "전체 스타일 + 장르 + 무드 3~5개 (한 줄)" },
+          fidelity_anchors: { t: "a", ph: "핵심 요소 5~8개 (한 줄에 하나)" },
           subject: {
             t: "m",
-            ph: "인물 전체를 한 문단으로 — 나이·성별·표정·시선·헤어·메이크업 등",
+            ph: "성별·나이·인종·체형·이 장면 조명 아래 피부 (1~2문장)",
           },
-          hair: { t: "m", ph: "헤어 전체 묘사 (길이·색·스타일·앞머리 등)" },
-          scene: { t: "m", ph: "장면·배경 묘사 (장소·환경·디테일)" },
-          wardrobe: { t: "m", ph: "의상 전체 묘사 (상의·하의·신발·액세서리)" },
-          pose: { t: "m", ph: "포즈·구도 묘사 (자세·카메라 방향·거리)" },
-          lighting: { t: "m", ph: "조명·색감 묘사 (광원·방향·분위기)" },
-          camera: { t: "m", ph: "카메라 묘사 (렌즈·샷 타입·구도·심도)" },
-          color_grading: { t: "m", ph: "색보정 톤 묘사 (팔레트·대비·채도)" },
-          anatomy_and_proportion: {
+          expression_and_gaze: {
             t: "m",
-            ph: "비율·해부학 주의 (예: 사실적 인체 비율)",
+            ph: "전체 인상 + 감정 키워드 + 눈꺼풀/입 벌어짐(mm)/홍채 방향/머리 각도 (2~3문장)",
           },
-          quality: T.quality,
-          negative_prompt: T.negative_prompt,
+          hair: {
+            t: "m",
+            ph: "실루엣·길이·색·가르마·앞머리·끝·귀 노출·움직임 (2~3문장)",
+          },
+          makeup: { t: "m", ph: "메이크업 레벨 + 특징, 또는 none / natural bare (1문장)" },
+          wardrobe: {
+            t: "m",
+            ph: "상의(종류/색/핏/원단/소매)·하의·레그웨어/신발/액세서리 (보이는 것만)",
+          },
+          scene: { t: "m", ph: "장소 + 핵심 사물별 위치·거리·색·초점 (2~3문장)" },
+          composition: {
+            t: "m",
+            ph: "프레임 크롭·헤드룸·위치·삼분할·가장자리·여백 (2문장)",
+          },
+          pose: { t: "m", ph: "몸 각도(도)·카메라 거리(m)·다리/팔/손·머리 방향 (2~3문장)" },
+          lighting: {
+            t: "m",
+            ph: "광원+시계방향+품질·밝은/그림자쪽 피부·배경 대비 (2~3문장)",
+          },
+          camera: { t: "m", ph: "초점거리·샷 타입·앵글·심도 (1문장)" },
+          color_grading: {
+            t: "m",
+            ph: "팔레트·대비·채도·finish(blacks/하이라이트/그레인) (1~2문장)",
+          },
+          quality: { t: "a", ph: "품질 항목 (한 줄에 하나)", v: QUALITY },
+          negative_prompt: { t: "a", ph: "제외 항목 (한 줄에 하나)", v: NEG_COMPACT },
         };
         function field(key, node, path) {
           var wrap = document.createElement("div"),
@@ -3093,7 +3403,13 @@ Rules:
               el.rows = 3;
               if (node.ph) el.placeholder = node.ph;
               if (node.v) el.value = node.v;
-            } else {
+          } else if (node.t === "f") {
+            el = document.createElement("textarea");
+            el.rows = 2;
+            el.readOnly = true;
+            el.value = node.v;
+            el.className = "gen-fixed";
+          } else {
               el = document.createElement("input");
               if (node.ph) el.placeholder = node.ph;
               if (node.v) el.value = node.v;
@@ -3133,6 +3449,10 @@ Rules:
             var node = obj[key],
               p = path ? path + "." + key : key;
             if (node && node.t) {
+              if (node.t === "f") {
+                o[key] = node.v;
+                return;
+              }
               var el = form.querySelector('[data-path="' + p + '"]');
               if (!el) return;
               if (node.t === "b") {
@@ -3220,6 +3540,34 @@ Rules:
       (function () {
         var m = document.getElementById("analyzemodal");
         if (!m) return;
+        var instrPre = document.getElementById("analyze-instr");
+        var instrSrc = {
+          full: document.getElementById("instr-full"),
+          normal: document.getElementById("instr-normal"),
+          reinterpret: document.getElementById("instr-reinterpret"),
+        };
+        var absub = document.getElementById("analyze-absub");
+        var absubText = {
+          full: "이미지 + 이 지시문 + 템플릿 → 템플릿 전체를 채워줍니다 (가장 상세).",
+          normal: "이미지 + 이 지시문 + 템플릿 → 압축된 최종 프롬프트로 정리해줍니다.",
+          reinterpret:
+            "이미지 + 이 지시문 + 템플릿 → 같은 무드의 새 장면으로 재해석해줍니다.",
+        };
+        function setInstr(kind) {
+          var src = instrSrc[kind];
+          if (src && instrPre) instrPre.textContent = src.textContent.trim();
+          if (absub && absubText[kind]) absub.textContent = absubText[kind];
+          m.querySelectorAll(".analyze-tab").forEach(function (t) {
+            t.classList.toggle("active", t.getAttribute("data-instr") === kind);
+          });
+          if (instrPre) instrPre.scrollTop = 0;
+        }
+        m.querySelectorAll(".analyze-tab").forEach(function (t) {
+          t.addEventListener("click", function () {
+            setInstr(t.getAttribute("data-instr"));
+          });
+        });
+        setInstr("full");
         document.querySelectorAll("#open-analyze").forEach(function (b) {
           b.addEventListener("click", function (e) {
             e.preventDefault();
